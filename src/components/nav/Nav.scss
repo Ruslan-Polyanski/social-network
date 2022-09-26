@@ -1,0 +1,23 @@
+.nav {
+    background-color: blue;
+    grid-area: nav;
+  
+    &__list {
+      list-style-type: none;
+      padding: 0;
+    }
+  
+    &__link {
+      display: block;
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 5px 10px;
+      transition-duration: .5s;
+      &:hover {
+        color: rgb(163, 160, 145);
+        
+      }
+    }
+  
+  }

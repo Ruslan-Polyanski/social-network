@@ -1,3 +1,4 @@
+import "./Section.scss";
 
 const Section = () => {
     return (
