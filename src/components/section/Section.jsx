@@ -1,3 +1,5 @@
+import Posts from "./posts/Posts";
+import AddText from "./areaText/AddText";
 import "./Section.scss";
 
 const Section = () => {
@@ -8,10 +10,8 @@ const Section = () => {
             <div className="avatar">avatar</div>
             <div className="description">description</div>
           </div>
-          <div>
-            <div className="title">My post</div>
-            <div className="post">sdfas asdfasf asdfsaf asddfasdfas asddfasdfas asdfasdfsaf asdfsaf</div>
-          </div>
+          <AddText/>
+          <Posts/>
         </article>
 ddd
       </section>
