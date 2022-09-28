@@ -1,6 +1,7 @@
 import "./Post.scss";
 
 const Post = (props) => {
+  console.log(props)
     return (
       <div>
         <div>
