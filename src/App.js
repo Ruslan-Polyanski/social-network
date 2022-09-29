@@ -15,12 +15,11 @@ import Settings from "./components/section/settings/Settings";
 const App = () => {
 
   return (
-  
+    <BrowserRouter>
     <div className="app">
       <Header/>
       <Nav/>
       <div className="background">
-      <BrowserRouter>
         <Routes>
           <Route path="/profile" element={<Section/>} />
           <Route path="/dialogs" element={<Dialogs/>} />
@@ -29,10 +28,10 @@ const App = () => {
           <Route path="/settings" element={<Settings/>} />
           <Route path="*" element={"not found"} />
         </Routes>
-      </BrowserRouter>
       </div>
       <Footer/>
     </div>
+    </BrowserRouter>
   )
 }
 

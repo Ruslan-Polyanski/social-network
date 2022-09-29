@@ -16,7 +16,9 @@
       transition-duration: .5s;
       &:hover {
         color: rgb(163, 160, 145);
-        
+      }
+      &.active {
+        color: rgb(119, 117, 110);
       }
     }
   
