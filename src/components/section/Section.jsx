@@ -6,10 +6,6 @@ const Section = () => {
     return (
         <section className="section">
         <article className="article">
-          <div>
-            <div className="avatar">avatar</div>
-            <div className="description">description</div>
-          </div>
           <AddText/>
           <Posts/>
         </article>
