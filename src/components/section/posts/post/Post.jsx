@@ -1,16 +1,15 @@
 import "./Post.scss";
 
-const Post = (props) => {
-  console.log(props)
+const Post = ({text, like}) => {
     return (
       <div>
         <div>
         <img src="https://static.1tv.ru/uploads/photo/image/2/huge/4062_huge_876c41f50e.jpg" alt="avatar" className="post__img"/>
         </div>
         <div className="post">
-          {props.text}
+          {text}
           <br/>
-          <span>{props.like}</span>
+          <span>{like}</span>
         </div>
       </div>
     )

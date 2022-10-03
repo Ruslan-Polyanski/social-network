@@ -1,36 +1,40 @@
 import style from "./Dialogs.module.css";
-import {NavLink} from "react-router-dom";
+import DialogItem from "./dilagItem/DialogItem";
+import DialogText from "./dialogText/DialogText";
 
-const DialogItem = ({id, name}) => {
-    return (
-        <div><NavLink to={`/dialogs/${id}`}>{name}</NavLink></div>
-    )
-}
 
-const DialogText = ({text}) => {
-    return (
-        <div>{text}</div>
-    )
-}
 
 const Dialogs = (props) => {
+    
+    const dataDialogs = [
+        {id: 0, name: "Dima"},
+        {id: 1, name: "Helen"},
+        {id: 2, name: "Rik"},
+        {id: 3, name: "Sarah"},
+        {id: 4, name: "Jake"},
+        {id: 5, name: "Tom"},
+    ];
+
+    const dataText = [
+        {id: 0, text: "How old are you?"},
+        {id: 1, text: "You are yong men?"},
+        {id: 2, text: "What is your name?"},
+        {id: 3, text: "Hello my friend!"},
+        {id: 4, text: "I think you don`t like this food."},
+        {id: 5, text: "Hello everyone!"},
+    ];
+
     return (
         <div className={style.dialogs}>
            <div>
-                <DialogItem id="dima" name="Dima"/>
-                <DialogItem id="helen" name="Helen"/>
-                <DialogItem id="rik" name="Rik"/>
-                <DialogItem id="sarah" name="Sarah"/>
-                <DialogItem id="jake" name="Jake"/>
-                <DialogItem id="tom" name="Tom"/>
+                {dataDialogs.map((item) => {
+                    return  <DialogItem key={item.id} id={item.id} name={item.name}/> ;
+                })}
            </div>
            <div>
-                <DialogText text="How old are you?"/>
-                <DialogText text="You are yong men?"/>
-                <DialogText text="What is your name?"/>
-                <DialogText text="Hello my friend!"/>
-                <DialogText text="I think you don`t like this food."/>
-                <DialogText text="Hello everyone!"/>
+                {dataText.map((item) => {
+                    return <DialogText key={item.id} id={item.id} text={item.text}/>
+                })}
            </div>
         </div>
     )

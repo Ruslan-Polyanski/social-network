@@ -2,14 +2,21 @@ import "./Nav.scss";
 import { NavLink } from "react-router-dom";
 
 const Nav = () => {
+
+  const navItem = [
+    {id: 0, path: "profile", text: "Profile"},
+    {id: 1, path: "dialogs", text: "Messages"},
+    {id: 2, path: "news", text: "News"},
+    {id: 3, path: "music", text: "Music"},
+    {id: 4, path: "settings", text: "Settings"},
+  ]
+
     return (
       <nav className="nav">
       <ul className="nav__list">
-      <li className="nav__item"><NavLink to="profile" className="nav__link">Profile</NavLink></li>
-          <li className="nav__item"><NavLink to="dialogs" className="nav__link">Messages</NavLink></li>
-          <li className="nav__item"><NavLink to="news" className="nav__link">News</NavLink></li>
-          <li className="nav__item"><NavLink to="music" className="nav__link">Music</NavLink></li>
-          <li className="nav__item"><NavLink to="settings" className="nav__link">Settings</NavLink></li>
+        {navItem.map((item) => {
+          return <li key={item.id} className="nav__item"><NavLink to={item.path} className="nav__link">{item.text}</NavLink></li>
+        })}
         </ul>
       </nav>
     )
