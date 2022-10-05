@@ -1,15 +1,7 @@
 import "./Nav.scss";
 import { NavLink } from "react-router-dom";
 
-const Nav = () => {
-
-  const navItem = [
-    {id: 0, path: "profile", text: "Profile"},
-    {id: 1, path: "dialogs", text: "Messages"},
-    {id: 2, path: "news", text: "News"},
-    {id: 3, path: "music", text: "Music"},
-    {id: 4, path: "settings", text: "Settings"},
-  ]
+const Nav = ({navItem}) => {
 
     return (
       <nav className="nav">

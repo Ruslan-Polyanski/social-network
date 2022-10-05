@@ -12,17 +12,17 @@ import Settings from "./components/section/settings/Settings";
 
 
 
-const App = () => {
-
+const App = ({dataPost, dataDialogs, dataText, navItem}) => {
+ 
   return (
     <BrowserRouter>
     <div className="app">
       <Header/>
-      <Nav/>
+      <Nav navItem={navItem} />
       <div className="background">
         <Routes>
-          <Route path="/profile" element={<Section/>} />
-          <Route path="/dialogs/*" element={<Dialogs/>} />
+          <Route path="/profile" element={<Section dataPost={dataPost}/>} />
+          <Route path="/dialogs/*" element={<Dialogs dataDialogs={dataDialogs} dataText={dataText} />} />
           <Route path="/news" element={<News/>} />
           <Route path="/music" element={<Music/>} />
           <Route path="/settings" element={<Settings/>} />
