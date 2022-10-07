@@ -13,7 +13,7 @@ import Settings from "./components/section/settings/Settings";
 
 
 const App = ({dataPost, dataDialogs, dataText, navItem}) => {
- 
+ debugger;
   return (
     <BrowserRouter>
     <div className="app">
