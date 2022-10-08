@@ -34,7 +34,15 @@ const state = {
         {id: 2, path: "news", text: "News"},
         {id: 3, path: "music", text: "Music"},
         {id: 4, path: "settings", text: "Settings"},
-      ]
+      ],
+
+      sidebar: {
+        friends: [
+          {id: 0, name: "Olga"},
+          {id: 1, name: "Karina"},
+          {id: 2, name: "Laura"}
+        ]
+      }
 }
 
 export default state;

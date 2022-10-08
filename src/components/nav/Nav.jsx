@@ -1,7 +1,8 @@
 import "./Nav.scss";
 import { NavLink } from "react-router-dom";
+import Friends from "./friends/Friends";
 
-const Nav = ({navItem}) => {
+const Nav = ({navItem, friends}) => {
 
     return (
       <nav className="nav">
@@ -10,6 +11,10 @@ const Nav = ({navItem}) => {
           return <li key={item.id} className="nav__item"><NavLink to={item.path} className="nav__link">{item.text}</NavLink></li>
         })}
         </ul>
+        <div className="nav__friends">
+          <h3 className="nav__h3">Friends</h3>
+          <Friends friends={friends}/>
+        </div>
       </nav>
     )
 }

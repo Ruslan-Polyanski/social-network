@@ -3,7 +3,12 @@ import style from "./DialogItem.module.css";
 
 const DialogItem = ({id, name}) => {
     return (
-        <div className={style.link__name}><NavLink to={`/dialogs/${id}`}>{name}</NavLink></div>
+        <div className={style.link__name}>
+            <div className={style.gap}>
+                <img src="https://klike.net/uploads/posts/2019-03/1551511801_1.jpg" alt="img name" className={style.img} />
+            </div>
+            <NavLink to={`/dialogs/${id}`} className={style.link}>{name}</NavLink>
+        </div>
     )
 }
 

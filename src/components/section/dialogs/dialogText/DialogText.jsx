@@ -1,8 +1,8 @@
-
+import style from "./DialogText.module.css";
 
 const DialogText = ({text}) => {
     return (
-        <div>{text}</div>
+        <div className={style.text}>{text}</div>
     )
 }
 

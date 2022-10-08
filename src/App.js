@@ -12,13 +12,13 @@ import Settings from "./components/section/settings/Settings";
 
 
 
-const App = ({dataPost, dataDialogs, dataText, navItem}) => {
- debugger;
+const App = ({friends, dataPost, dataDialogs, dataText, navItem}) => {
+
   return (
     <BrowserRouter>
     <div className="app">
       <Header/>
-      <Nav navItem={navItem} />
+      <Nav navItem={navItem} friends={friends}/>
       <div className="background">
         <Routes>
           <Route path="/profile" element={<Section dataPost={dataPost}/>} />
