@@ -45,5 +45,16 @@ const state = {
       }
 }
 
+export const addDataPost = (data) => {
+  debugger
+  const dataPostUser = {
+          id: 6, 
+          text: data, 
+          like: 10
+        }
+  state.dataPost.push(dataPostUser)
+}
+
 export default state;
+
 

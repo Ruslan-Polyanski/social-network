@@ -1,10 +1,20 @@
 import "./AddText.scss";
+import React from "react";
 
-const AddText = () => {
+const AddText = ({addDataPost}) => {
+    
+    const textContent = React.createRef()
+
+    const addPost = () => {
+        debugger
+        const myText = textContent.current.value;
+        addDataPost(myText)
+    }
+
     return (
         <>
-        <textarea></textarea>
-        <button>Add Post</button>
+        <textarea ref={textContent}></textarea>
+        <button onClick={addPost}>Add Post</button>
         </>
     )
 }
