@@ -1,13 +1,6 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
 import Redux from './Redux.jsx';
-import { addDataPost } from "./Redux.jsx";
+import reRender from "./rerender.jsx"
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App addDataPost={addDataPost} friends={Redux.sidebar.friends} navItem={Redux.navItem} dataPost={Redux.dataPost} dataDialogs={Redux.dataDialogs} dataText={Redux.dataText}/>
-  </React.StrictMode>
-);
+reRender(Redux)
+
 

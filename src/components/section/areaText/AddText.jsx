@@ -6,7 +6,6 @@ const AddText = ({addDataPost}) => {
     const textContent = React.createRef()
 
     const addPost = () => {
-        debugger
         const myText = textContent.current.value;
         addDataPost(myText)
     }
