@@ -60,13 +60,14 @@ const state = {
 export const changeTextState = (writeText) => {
   state.profile.dataTextArea = writeText;
   reRender(state)
+  state.profile.dataTextArea = "";
 }
 
-export const addDataPost = (data) => {
+export const addDataPost = () => {
   const dataPostUser = {
-          id: 6, 
-          text: data, 
-          like: 10
+          id: state.profile.dataPost.length, 
+          text: state.profile.dataTextArea, 
+          like: Math.floor(Math.random() * 10)
         }
   state.profile.dataPost.push(dataPostUser)
   reRender(state)

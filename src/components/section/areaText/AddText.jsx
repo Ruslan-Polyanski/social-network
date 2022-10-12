@@ -5,16 +5,9 @@ const AddText = ({addDataPost, dataTextArea, changeTextState}) => {
     
     const textContent = React.createRef()
     
-    const addPost = () => {
-        const myText = textContent.current.value;
-        console.log(myText)
-        addDataPost(myText)
-    }
-    
     const showText = () => {
         const myText = textContent.current.value;
         changeTextState(myText)
-        console.log(myText)
     }
 
     
@@ -22,7 +15,7 @@ const AddText = ({addDataPost, dataTextArea, changeTextState}) => {
         return (
             <div>
                 <textarea onChange={showText} ref={textContent} value={dataTextArea} />
-                <button onClick={addPost}>Add Post</button>
+                <button onClick={addDataPost}>Add Post</button>
             </div>
         )
     }
