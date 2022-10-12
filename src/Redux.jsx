@@ -3,7 +3,9 @@ import reRender from "./rerender.jsx"
 
 const state = {
 
-    dataPost: [
+    profile: {
+
+      dataPost: [
         {id: 0, text: "text 1", like: 8},
         {id: 1, text: "text 2", like: 12},
         {id: 2, text: "text 3", like: 4},
@@ -11,16 +13,7 @@ const state = {
         {id: 4, text: "text 5", like: 23},
         {id: 5, text: "text 6", like: 11},
       ],
-      
-      dataDialogs: [
-        {id: 0, name: "Dima"},
-        {id: 1, name: "Helen"},
-        {id: 2, name: "Rik"},
-        {id: 3, name: "Sarah"},
-        {id: 4, name: "Jake"},
-        {id: 5, name: "Tom"},
-      ],
-      
+
       dataText: [
         {id: 0, text: "How old are you?"},
         {id: 1, text: "You are yong men?"},
@@ -29,6 +22,23 @@ const state = {
         {id: 4, text: "I think you don`t like this food."},
         {id: 5, text: "Hello everyone!"},
       ],
+
+      dataTextArea: "Write something!"
+
+    },
+
+    messages: {
+
+      dataDialogs: [
+        {id: 0, name: "Dima"},
+        {id: 1, name: "Helen"},
+        {id: 2, name: "Rik"},
+        {id: 3, name: "Sarah"},
+        {id: 4, name: "Jake"},
+        {id: 5, name: "Tom"},
+      ],
+
+    },
 
       navItem: [
         {id: 0, path: "profile", text: "Profile"},
@@ -47,13 +57,18 @@ const state = {
       }
 }
 
+export const changeTextState = (writeText) => {
+  state.profile.dataTextArea = writeText;
+  reRender(state)
+}
+
 export const addDataPost = (data) => {
   const dataPostUser = {
           id: 6, 
           text: data, 
           like: 10
         }
-  state.dataPost.push(dataPostUser)
+  state.profile.dataPost.push(dataPostUser)
   reRender(state)
 }
 
