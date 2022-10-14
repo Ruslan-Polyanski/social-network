@@ -1,6 +1,3 @@
-import reRender from "./rerender.jsx"
-
-
 const state = {
 
     profile: {
@@ -57,10 +54,14 @@ const state = {
       }
 }
 
+export let stateUpdate = () => {
+  console.log("State updated!")
+}
+
 export const changeTextState = (writeText) => {
   state.profile.dataTextArea = writeText;
-  reRender(state)
-  state.profile.dataTextArea = "";
+  stateUpdate(state)
+  state.profile.dataTextArea = ""
 }
 
 export const addDataPost = () => {
@@ -70,8 +71,14 @@ export const addDataPost = () => {
           like: Math.floor(Math.random() * 10)
         }
   state.profile.dataPost.push(dataPostUser)
-  reRender(state)
+  stateUpdate(state)
 }
+
+export const subscribe = (observer) => {
+  stateUpdate = observer
+}
+
+
 
 export default state;
 
