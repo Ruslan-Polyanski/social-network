@@ -10,8 +10,6 @@ const AddText = ({addDataPost, dataTextArea, changeTextState}) => {
         changeTextState(myText)
     }
 
-    
-
         return (
             <div>
                 <textarea onChange={showText} ref={textContent} value={dataTextArea} />

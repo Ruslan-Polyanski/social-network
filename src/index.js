@@ -1,30 +1,29 @@
-import Redux, { subscribe, addDataPost, changeTextState} from './Redux.jsx';
+import store  from './Redux.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
 const reRender = (state) => {
-    root.render(
+  root.render(
       <React.StrictMode>
         <App 
-            addDataPost={addDataPost} 
-            changeTextState={changeTextState} 
-            dataTextArea={Redux.profile.dataTextArea} 
-            friends={Redux.sidebar.friends} 
-            navItem={Redux.navItem} 
-            dataPost={Redux.profile.dataPost} 
-            dataDialogs={Redux.messages.dataDialogs} 
-            dataText={Redux.profile.dataText}
+            addDataPost={store.addDataPost.bind(store)} 
+            changeTextState={store.changeTextState.bind(store)} 
+            dataTextArea={state.profile.dataTextArea} 
+            friends={state.sidebar.friends} 
+            navItem={state.navItem} 
+            dataPost={state.profile.dataPost} 
+            dataDialogs={state.messages.dataDialogs} 
+            dataText={state.profile.dataText}
         />
       </React.StrictMode>
     );
   }
 
-  reRender(Redux)
+  reRender(store.getState())
 
-  subscribe(reRender)
+  store.subscribe(reRender)
 
 
 

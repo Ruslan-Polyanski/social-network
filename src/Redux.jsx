@@ -1,7 +1,6 @@
-const state = {
-
+const store = {
+  _state: {
     profile: {
-
       dataPost: [
         {id: 0, text: "text 1", like: 8},
         {id: 1, text: "text 2", like: 12},
@@ -52,34 +51,32 @@ const state = {
           {id: 2, name: "Laura"}
         ]
       }
+    },
+    getState(){
+      return this._state;
+    },
+    _stateUpdate() {
+      console.log("State updated!")
+    },
+    changeTextState(writeText) {
+      this._state.profile.dataTextArea = writeText;
+      this._stateUpdate(this._state)
+    },
+    addDataPost() {
+      const dataPostUser = {
+              id: this._state.profile.dataPost.length, 
+              text: this._state.profile.dataTextArea, 
+              like: Math.floor(Math.random() * 10)
+            }
+      this._state.profile.dataPost.push(dataPostUser)
+      this._state.profile.dataTextArea = "";
+      this._stateUpdate(this._state)
+    },
+    subscribe(observer) {
+      this._stateUpdate = observer;
+    }
 }
 
-export let stateUpdate = () => {
-  console.log("State updated!")
-}
-
-export const changeTextState = (writeText) => {
-  state.profile.dataTextArea = writeText;
-  stateUpdate(state)
-  state.profile.dataTextArea = ""
-}
-
-export const addDataPost = () => {
-  const dataPostUser = {
-          id: state.profile.dataPost.length, 
-          text: state.profile.dataTextArea, 
-          like: Math.floor(Math.random() * 10)
-        }
-  state.profile.dataPost.push(dataPostUser)
-  stateUpdate(state)
-}
-
-export const subscribe = (observer) => {
-  stateUpdate = observer
-}
-
-
-
-export default state;
+export default store;
 
 
