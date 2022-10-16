@@ -1,5 +1,7 @@
 const ADD_POST = "ADD-POST";
 const CHANGE_TEXT = "CHANGE-TEXT";
+const ADD_CONTENT_DIALOG = "ADD-CONTENT";
+const CHANGE_CONTENT_DIALOG = "CHANGE-CONTENT-DIALOG";
 
 const store = {
   _state: {
@@ -11,15 +13,6 @@ const store = {
         {id: 3, text: "text 4", like: 7},
         {id: 4, text: "text 5", like: 23},
         {id: 5, text: "text 6", like: 11},
-      ],
-
-      dataText: [
-        {id: 0, text: "How old are you?"},
-        {id: 1, text: "You are yong men?"},
-        {id: 2, text: "What is your name?"},
-        {id: 3, text: "Hello my friend!"},
-        {id: 4, text: "I think you don`t like this food."},
-        {id: 5, text: "Hello everyone!"},
       ],
 
       dataTextArea: "Write something!"
@@ -36,6 +29,17 @@ const store = {
         {id: 4, name: "Jake"},
         {id: 5, name: "Tom"},
       ],
+
+      dataText: [
+        {id: 0, text: "How old are you?"},
+        {id: 1, text: "You are yong men?"},
+        {id: 2, text: "What is your name?"},
+        {id: 3, text: "Hello my friend!"},
+        {id: 4, text: "I think you don`t like this food."},
+        {id: 5, text: "Hello everyone!"},
+      ],
+
+      dataContentTextArea: "Write somethihg..."
 
     },
 
@@ -80,12 +84,29 @@ const store = {
         this._state.profile.dataTextArea = action.writeText;
         this._stateUpdate(this._state)
       }
+      if(action.type === ADD_CONTENT_DIALOG){
+        const newMessage = {
+          id: this._state.messages.dataText.length, 
+          text: this._state.messages.dataContentTextArea
+        }
+        this._state.messages.dataText.push(newMessage)
+        this._state.messages.dataContentTextArea = ""
+        this._stateUpdate(this._state)
+      }
+      if(action.type === CHANGE_CONTENT_DIALOG){
+        this._state.messages.dataContentTextArea = action.writeText;
+        this._stateUpdate(this._state)
+      }
     }
 }
 
 export const addPostActionCreator = () => ({type: ADD_POST});
 
 export const changeTextActionCreator = (text) => ({type: CHANGE_TEXT, writeText: text});
+
+export const addContentActionCreator = () => ({type: ADD_CONTENT_DIALOG});
+
+export const changeContentActionCreator = (text) => ({type: CHANGE_CONTENT_DIALOG, writeText: text});
 
 
 export default store;

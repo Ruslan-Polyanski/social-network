@@ -14,7 +14,8 @@ const reRender = (state) => {
             navItem={state.navItem} 
             dataPost={state.profile.dataPost} 
             dataDialogs={state.messages.dataDialogs} 
-            dataText={state.profile.dataText}
+            dataText={state.messages.dataText}
+            dataContentTextArea={state.messages.dataContentTextArea}
         />
       </React.StrictMode>
     );
