@@ -8,8 +8,7 @@ const reRender = (state) => {
   root.render(
       <React.StrictMode>
         <App 
-            addDataPost={store.addDataPost.bind(store)} 
-            changeTextState={store.changeTextState.bind(store)} 
+            dispatch={store.dispatch.bind(store)}
             dataTextArea={state.profile.dataTextArea} 
             friends={state.sidebar.friends} 
             navItem={state.navItem} 

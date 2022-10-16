@@ -1,19 +1,26 @@
 import "./AddText.scss";
 import React from "react";
+import {changeTextActionCreator, addPostActionCreator} from "./../../../Redux.jsx";
 
-const AddText = ({addDataPost, dataTextArea, changeTextState}) => {
+const AddText = ({dispatch, dataTextArea}) => {
     
     const textContent = React.createRef()
     
     const showText = () => {
         const myText = textContent.current.value;
-        changeTextState(myText)
+        const action = changeTextActionCreator(myText)
+        dispatch(action)
+    }
+
+    const addText = () => {
+        const action = addPostActionCreator();
+        dispatch(action)
     }
 
         return (
             <div>
                 <textarea onChange={showText} ref={textContent} value={dataTextArea} />
-                <button onClick={addDataPost}>Add Post</button>
+                <button onClick={addText}>Add Post</button>
             </div>
         )
     }

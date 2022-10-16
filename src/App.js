@@ -12,7 +12,7 @@ import Settings from "./components/section/settings/Settings";
 
 
 
-const App = ({addDataPost, changeTextState, dataTextArea, friends, dataPost, dataDialogs, dataText, navItem}) => {
+const App = ({dispatch, dataTextArea, friends, dataPost, dataDialogs, dataText, navItem}) => {
 
   return (
     <BrowserRouter>
@@ -21,7 +21,7 @@ const App = ({addDataPost, changeTextState, dataTextArea, friends, dataPost, dat
       <Nav navItem={navItem} friends={friends}/>
       <div className="background">
         <Routes>
-          <Route path="/profile" element={<Section changeTextState={changeTextState} dataTextArea={dataTextArea} addDataPost={addDataPost} dataPost={dataPost}/>} />
+          <Route path="/profile" element={<Section dispatch={dispatch} dataTextArea={dataTextArea} dataPost={dataPost}/>} />
           <Route path="/dialogs/*" element={<Dialogs dataDialogs={dataDialogs} dataText={dataText} />} />
           <Route path="/news" element={<News/>} />
           <Route path="/music" element={<Music/>} />

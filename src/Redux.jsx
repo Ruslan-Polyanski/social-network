@@ -1,3 +1,6 @@
+const ADD_POST = "ADD-POST";
+const CHANGE_TEXT = "CHANGE-TEXT";
+
 const store = {
   _state: {
     profile: {
@@ -52,30 +55,38 @@ const store = {
         ]
       }
     },
-    getState(){
-      return this._state;
-    },
     _stateUpdate() {
       console.log("State updated!")
     },
-    changeTextState(writeText) {
-      this._state.profile.dataTextArea = writeText;
-      this._stateUpdate(this._state)
-    },
-    addDataPost() {
-      const dataPostUser = {
-              id: this._state.profile.dataPost.length, 
-              text: this._state.profile.dataTextArea, 
-              like: Math.floor(Math.random() * 10)
-            }
-      this._state.profile.dataPost.push(dataPostUser)
-      this._state.profile.dataTextArea = "";
-      this._stateUpdate(this._state)
+
+    getState(){
+      return this._state;
     },
     subscribe(observer) {
       this._stateUpdate = observer;
+    },
+    dispatch(action) {
+      if(action.type === ADD_POST){
+        const dataPostUser = {
+          id: this._state.profile.dataPost.length, 
+          text: this._state.profile.dataTextArea, 
+          like: Math.floor(Math.random() * 10)
+        }
+        this._state.profile.dataPost.push(dataPostUser)
+        this._state.profile.dataTextArea = "";
+        this._stateUpdate(this._state)
+      }
+      if(action.type === CHANGE_TEXT){
+        this._state.profile.dataTextArea = action.writeText;
+        this._stateUpdate(this._state)
+      }
     }
 }
+
+export const addPostActionCreator = () => ({type: ADD_POST});
+
+export const changeTextActionCreator = (text) => ({type: CHANGE_TEXT, writeText: text});
+
 
 export default store;
 
