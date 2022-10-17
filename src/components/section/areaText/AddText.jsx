@@ -1,13 +1,11 @@
 import "./AddText.scss";
 import React from "react";
-import {changeTextActionCreator, addPostActionCreator} from "./../../../Redux.jsx";
+import {changeTextActionCreator, addPostActionCreator} from "./../../redux/reducerProfile.jsx";
 
 const AddText = ({dispatch, dataTextArea}) => {
     
-    const textContent = React.createRef()
-    
-    const showText = () => {
-        const myText = textContent.current.value;
+    const showText = (event) => {
+        const myText = event.target.value;
         const action = changeTextActionCreator(myText)
         dispatch(action)
     }
@@ -19,7 +17,7 @@ const AddText = ({dispatch, dataTextArea}) => {
 
         return (
             <div>
-                <textarea onChange={showText} ref={textContent} value={dataTextArea} />
+                <textarea onChange={showText} value={dataTextArea} />
                 <button onClick={addText}>Add Post</button>
             </div>
         )

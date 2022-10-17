@@ -1,4 +1,4 @@
-import store  from './Redux.jsx';
+import store  from './components/redux/Redux.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';

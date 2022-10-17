@@ -12,7 +12,14 @@ import Settings from "./components/section/settings/Settings";
 
 
 
-const App = ({dispatch, dataTextArea, dataContentTextArea, friends, dataPost, dataDialogs, dataText, navItem}) => {
+const App = ({dispatch, 
+              dataTextArea, 
+              dataContentTextArea, 
+              friends, 
+              dataPost, 
+              dataDialogs, 
+              dataText, 
+              navItem}) => {
 
   return (
     <BrowserRouter>
