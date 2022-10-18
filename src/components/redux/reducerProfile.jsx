@@ -1,8 +1,21 @@
 const ADD_POST = "ADD-POST";
 const CHANGE_TEXT = "CHANGE-TEXT";
 
+const initialState = {
+    dataPost: [
+      {id: 0, text: "text 1", like: 8},
+      {id: 1, text: "text 2", like: 12},
+      {id: 2, text: "text 3", like: 4},
+      {id: 3, text: "text 4", like: 7},
+      {id: 4, text: "text 5", like: 23},
+      {id: 5, text: "text 6", like: 11},
+    ],
 
-const reducerProfile = (state, action) => {
+    dataTextArea: "Write something!"
+
+  }
+
+const reducerProfile = (state = initialState, action) => {
     switch (action.type){
         case ADD_POST:
             const dataPostUser = {

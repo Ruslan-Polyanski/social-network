@@ -1,4 +1,4 @@
-import store  from './components/redux/Redux.jsx';
+import store  from './components/redux/reduxStore.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -23,7 +23,10 @@ const reRender = (state) => {
 
   reRender(store.getState())
 
-  store.subscribe(reRender)
+  store.subscribe(() => {
+    const state = store.getState();
+    reRender(state)
+  })
 
 
 

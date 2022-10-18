@@ -70,10 +70,10 @@ const store = {
       this._stateUpdate = observer;
     },
     dispatch(action) {
-      reducerProfile(this._state.profile, action)
-      reducerMessages(this._state.messages, action)
-      reducerSidebar(this._state.sidebar, action)
-      reducerNavItem(this._state.navItem, action)
+      this._state.profile = reducerProfile(this._state.profile, action)
+      this._state.messages = reducerMessages(this._state.messages, action)
+      this._state.sidebar = reducerSidebar(this._state.sidebar, action)
+      this._state.navItem = reducerNavItem(this._state.navItem, action)
 
       this._stateUpdate(this._state)
     }
