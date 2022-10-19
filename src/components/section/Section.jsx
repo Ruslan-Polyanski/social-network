@@ -1,12 +1,12 @@
 import Posts from "./posts/Posts";
-import AddText from "./areaText/AddText";
+import AddTextContiner from "./areaText/AddTextContiner";
 import "./Section.scss";
 
 const Section = ({dataPost, dispatch, dataTextArea}) => {
     return (
         <section className="section">
         <article className="article">
-          <AddText dataTextArea={dataTextArea} dispatch={dispatch} />
+          <AddTextContiner dataTextArea={dataTextArea} dispatch={dispatch} />
           <Posts dataPost={dataPost} />
         </article>
 ddd

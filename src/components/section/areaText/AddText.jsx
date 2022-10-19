@@ -1,18 +1,15 @@
 import "./AddText.scss";
 import React from "react";
-import {changeTextActionCreator, addPostActionCreator} from "./../../redux/reducerProfile.jsx";
 
-const AddText = ({dispatch, dataTextArea}) => {
+const AddText = ({onAddText, onShowText, dataTextArea}) => {
     
     const showText = (event) => {
         const myText = event.target.value;
-        const action = changeTextActionCreator(myText)
-        dispatch(action)
+        onShowText(myText)
     }
 
     const addText = () => {
-        const action = addPostActionCreator();
-        dispatch(action)
+        onAddText()
     }
 
         return (

@@ -1,6 +1,6 @@
 import Header from "./components/header/Header";
 import Nav from "./components/nav/Nav";
-import Dialogs from "./components/section/dialogs/Dialogs";
+import DialogsContiner from "./components/section/dialogs/DialogsContiner.jsx";
 import Section from "./components/section/Section";
 import Footer from "./components/footer/Footer";
 import News from "./components/section/news/News";
@@ -29,7 +29,7 @@ const App = ({dispatch,
       <div className="background">
         <Routes>
           <Route path="/profile" element={<Section dispatch={dispatch} dataTextArea={dataTextArea} dataPost={dataPost}/>} />
-          <Route path="/dialogs/*" element={<Dialogs dispatch={dispatch} dataContentTextArea={dataContentTextArea} dataDialogs={dataDialogs} dataText={dataText} />} />
+          <Route path="/dialogs/*" element={<DialogsContiner dispatch={dispatch} dataContentTextArea={dataContentTextArea} dataDialogs={dataDialogs} dataText={dataText} />} />
           <Route path="/news" element={<News/>} />
           <Route path="/music" element={<Music/>} />
           <Route path="/settings" element={<Settings/>} />

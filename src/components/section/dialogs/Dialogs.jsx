@@ -2,19 +2,16 @@ import React from "react";
 import style from "./Dialogs.module.css";
 import DialogItem from "./dilagItem/DialogItem";
 import DialogText from "./dialogText/DialogText";
-import { addContentActionCreator, changeContentActionCreator } from "./../../redux/reducerMessages.jsx";
 
-
-const Dialogs = ({dispatch, dataContentTextArea, dataDialogs, dataText}) => {
+const Dialogs = ({onAddContent, onChangeContent, dataContentTextArea, dataDialogs, dataText}) => {
 
     const changeContent = (event) => {
-        const action = changeContentActionCreator(event.target.value);
-        dispatch(action)
+        const text = event.target.value;
+        onChangeContent(text)
     }
     
     const addContent = () => {
-        const action = addContentActionCreator()
-        dispatch(action)
+        onAddContent()
     }
 
     return (
