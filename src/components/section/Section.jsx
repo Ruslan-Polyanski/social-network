@@ -1,4 +1,4 @@
-import Posts from "./posts/Posts";
+import PostsContiner from "./posts/PostsContiner";
 import AddTextContiner from "./areaText/AddTextContiner";
 import "./Section.scss";
 
@@ -7,7 +7,7 @@ const Section = ({dataPost, dispatch, dataTextArea}) => {
         <section className="section">
         <article className="article">
           <AddTextContiner />
-          <Posts />
+          <PostsContiner />
         </article>
 ddd
       </section>

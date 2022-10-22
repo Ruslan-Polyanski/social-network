@@ -1,16 +1,9 @@
-import StoreContext from "../../../StoreContext.jsx";
+
 import Post from "./post/Post.jsx";
 import "./Posts.scss";
 
 const Posts = ({dataPost}) => {
 
-    return (
-      <StoreContext.Consumer>
-        {
-          (store) => {
-
-           const dataPost = store.getState().profile.dataPost;
-           
            return (
               <div>
                 <div className="title">My posts</div>
@@ -19,10 +12,6 @@ const Posts = ({dataPost}) => {
                 })}
               </div>
            )
-          }
-        }
-        </StoreContext.Consumer>
-    )
 }
 
 export default Posts;
