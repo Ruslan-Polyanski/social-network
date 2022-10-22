@@ -6,8 +6,8 @@ const Section = ({dataPost, dispatch, dataTextArea}) => {
     return (
         <section className="section">
         <article className="article">
-          <AddTextContiner dataTextArea={dataTextArea} dispatch={dispatch} />
-          <Posts dataPost={dataPost} />
+          <AddTextContiner />
+          <Posts />
         </article>
 ddd
       </section>

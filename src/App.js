@@ -7,7 +7,7 @@ import News from "./components/section/news/News";
 import Music from "./components/section/music/Music";
 import 'normalize.css';
 import "./App.scss"
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Settings from "./components/section/settings/Settings";
 
 
@@ -22,14 +22,13 @@ const App = ({dispatch,
               navItem}) => {
 
   return (
-    <BrowserRouter>
     <div className="app">
       <Header/>
       <Nav navItem={navItem} friends={friends}/>
       <div className="background">
         <Routes>
-          <Route path="/profile" element={<Section dispatch={dispatch} dataTextArea={dataTextArea} dataPost={dataPost}/>} />
-          <Route path="/dialogs/*" element={<DialogsContiner dispatch={dispatch} dataContentTextArea={dataContentTextArea} dataDialogs={dataDialogs} dataText={dataText} />} />
+          <Route path="/profile" element={<Section />} />
+          <Route path="/dialogs/*" element={<DialogsContiner />} />
           <Route path="/news" element={<News/>} />
           <Route path="/music" element={<Music/>} />
           <Route path="/settings" element={<Settings/>} />
@@ -38,7 +37,6 @@ const App = ({dispatch,
       </div>
       <Footer/>
     </div>
-    </BrowserRouter>
   )
 }
 

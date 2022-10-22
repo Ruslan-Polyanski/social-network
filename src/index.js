@@ -2,22 +2,19 @@ import store  from './components/redux/reduxStore.jsx';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { BrowserRouter } from "react-router-dom";
+import StoreContext from './StoreContext.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const reRender = (state) => {
   root.render(
-      <React.StrictMode>
-        <App 
-            dispatch={store.dispatch.bind(store)}
-            dataTextArea={state.profile.dataTextArea} 
-            friends={state.sidebar.friends} 
-            navItem={state.navItem} 
-            dataPost={state.profile.dataPost} 
-            dataDialogs={state.messages.dataDialogs} 
-            dataText={state.messages.dataText}
-            dataContentTextArea={state.messages.dataContentTextArea}
-        />
-      </React.StrictMode>
+      <StoreContext.Provider value={store}>
+        <BrowserRouter>
+              <React.StrictMode>
+                <App friends={state.sidebar.friends} navItem={state.navItem} />
+              </React.StrictMode>
+        </BrowserRouter>
+      </StoreContext.Provider>
     );
   }
 
