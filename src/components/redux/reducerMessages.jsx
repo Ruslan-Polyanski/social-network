@@ -32,12 +32,16 @@ const reducerMessages = (state = initialState, action) => {
             id: state.dataText.length, 
             text: state.dataContentTextArea
           }
-          state.dataText.push(newMessage)
-          state.dataContentTextArea = "";
-          return state;
+          return {
+                  ...state,
+                  dataText: [...state.dataText, newMessage],
+                  dataContentTextArea: "",
+                 }
         case CHANGE_CONTENT_DIALOG: 
-            state.dataContentTextArea = action.writeText;
-            return state;
+          return {
+            ...state,
+            dataContentTextArea: action.writeText,
+          }
         default: return state;
     }
 }

@@ -23,12 +23,16 @@ const reducerProfile = (state = initialState, action) => {
                 text: state.dataTextArea, 
                 like: Math.floor(Math.random() * 10)
               }
-              state.dataPost.push(dataPostUser)
-              state.dataTextArea = "";
-              return state;
+          return {
+                  ...state,  
+                  dataPost: [...state.dataPost, dataPostUser],
+                  dataTextArea: "",
+                }
         case CHANGE_TEXT:
-            state.dataTextArea = action.writeText;
-            return state;
+          return {
+                  ...state,  
+                  dataTextArea: action.writeText
+                 }
         default: return state;
     }
 }
