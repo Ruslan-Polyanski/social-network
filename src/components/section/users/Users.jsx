@@ -1,17 +1,12 @@
+import axios from "axios";
 import style from "./Users.module.css";
+import userPhoto from "./../../../assets/img/b540fd8cd94b9e2a8590411dcc866463.jpg";
 
 
 const Users = ({users, follow, unfollow, setUsers}) => {
 
     if(users.length === 0){
-        setUsers(
-            [
-                {id: 1, img: "https://v1.popcornnews.ru/k2/persons/canvas/970x700/upload/PsJkKl.jpg", followed: false, fullName: "Monica Bellucci", status: "I am an actor", location: {country: "USE", city: "New York"}},
-                {id: 2, img: "https://v1.popcornnews.ru/k2/persons/canvas/970x700/upload/PsJkKl.jpg", followed: true, fullName: "Den Simons", status: "I am a worker", location: {country: "UK", city: "London"}},
-                {id: 3, img: "https://v1.popcornnews.ru/k2/persons/canvas/970x700/upload/PsJkKl.jpg", followed: false, fullName: "Ted Chan", status: "I am a write", location: {country: "Spain", city: "Madrid"}},
-                {id: 4, img: "https://v1.popcornnews.ru/k2/persons/canvas/970x700/upload/PsJkKl.jpg", followed: true, fullName: "Nil Shosterman", status: "I am unemployed", location: {country: "Russia", city: "Moscow"}},
-            ]
-        )
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {setUsers(response.data.items)});
     }
 
     return (
@@ -20,7 +15,7 @@ const Users = ({users, follow, unfollow, setUsers}) => {
                 return (
                     <div key={user.id}>
                         <div>
-                            <div><img src={user.img} alt={user.fullName} className={style.photo}/></div>
+                            <div><img src={user.photos.small ? user.photos.small : userPhoto } alt={user.name} className={style.photo}/></div>
                             <div>
                                 {
                                     user.followed ? 
@@ -31,12 +26,12 @@ const Users = ({users, follow, unfollow, setUsers}) => {
                         </div>
                         <div>
                             <div>
-                                <div>{user.fullName}</div>
+                                <div>{user.name}</div>
                                 <div>{user.status}</div>
                             </div>
                             <div>
-                                <div>{user.location.country}</div>
-                                <div>{user.location.city}</div>
+                                <div>{"user.location.country"}</div>
+                                <div>{"user.location.city"}</div>
                             </div>
                         </div>
 
