@@ -5,6 +5,7 @@ const initialState = [
     {id: 2, path: "news", text: "News"},
     {id: 3, path: "music", text: "Music"},
     {id: 4, path: "settings", text: "Settings"},
+    {id: 5, path: "users", text: "Users"},
   ];
 
 const reducerNavItem = (state = initialState, action) => {

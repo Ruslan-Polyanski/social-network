@@ -9,11 +9,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <BrowserRouter>
-        <React.StrictMode>
         <Provider store={store}>                  
           <App friends={store.getState().sidebar.friends} navItem={store.getState().navItem} />
         </Provider>
-        </React.StrictMode>
   </BrowserRouter>
 );
 

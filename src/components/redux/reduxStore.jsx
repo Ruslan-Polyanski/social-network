@@ -3,12 +3,14 @@ import reducerMessages from "./reducerMessages";
 import reducerProfile from "./reducerProfile";
 import reducerSidebar from "./reducerSidebar";
 import reducerNavItem from "./reducerNavItem";
+import reducerUsers from "./reducerUsers";
 
 const reducers = combineReducers({
     messages: reducerMessages,
     profile: reducerProfile,
     sidebar: reducerSidebar,
-    navItem: reducerNavItem
+    navItem: reducerNavItem,
+    usersPage: reducerUsers
 });
 
 const store = createStore(reducers);
