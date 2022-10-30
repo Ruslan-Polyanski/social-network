@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { followAC, unfollowAC, setUsersAC, setPageAC, setTotalCountAC, setIsPreloaderAC} from "../../redux/reducerUsers";
+import { follow, unfollow, setUsers, setPage, setTotalCount, setIsPreloader } from "../../redux/reducerUsers";
 import axios from "axios";
 import React from "react";
 import Users from "./Users.jsx";
@@ -12,7 +12,7 @@ class UsersContiner extends React.Component {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.activePage}&count=${this.props.pageSizeUsers}`)
         .then(response => {
             this.props.setUsers(response.data.items)
-            this.props.setTotalUsersCount(response.data.totalCount)
+            this.props.setTotalCount(response.data.totalCount)
             this.props.setIsPreloader(false)
         });
     }
@@ -62,27 +62,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId))
-        },
-        unfollow: (userId) => {
-            dispatch(unfollowAC(userId))
-        },
-        setUsers: (users) => {
-            dispatch(setUsersAC(users))
-        },
-        setPage: (page) => {
-            dispatch(setPageAC(page))
-        },
-        setTotalUsersCount: (totalUsersCount) => {
-            dispatch(setTotalCountAC(totalUsersCount))
-        },
-        setIsPreloader: (isPreloader) => {
-            dispatch(setIsPreloaderAC(isPreloader))
-        },
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContiner);
+export default connect(mapStateToProps, {follow, unfollow, setUsers, setPage, setTotalCount, setIsPreloader})(UsersContiner);

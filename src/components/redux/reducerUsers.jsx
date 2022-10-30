@@ -61,9 +61,9 @@ const reduserUsers = (state = initialState, action) => {
 
 export default reduserUsers;
 
-export const followAC = (userId) => ({type: FOLLOW, userId: userId});
-export const unfollowAC = (userId) => ({type: UNFOLLOW, userId: userId});
-export const setUsersAC = (users) => ({type: SET_USERS, users: users});
-export const setPageAC = (activePage) => ({type: SET_ACTIVE_PAGE, activePage: activePage});
-export const setTotalCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount: totalUsersCount});
-export const setIsPreloaderAC = (isPreloader) => ({type: SET_IS_PRELOADER, isPreloader: isPreloader});
+export const follow = (userId) => ({type: FOLLOW, userId: userId});
+export const unfollow = (userId) => ({type: UNFOLLOW, userId: userId});
+export const setUsers = (users) => ({type: SET_USERS, users: users});
+export const setPage = (activePage) => ({type: SET_ACTIVE_PAGE, activePage: activePage});
+export const setTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount: totalUsersCount});
+export const setIsPreloader = (isPreloader) => ({type: SET_IS_PRELOADER, isPreloader: isPreloader});
