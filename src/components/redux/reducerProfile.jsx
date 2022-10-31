@@ -1,5 +1,6 @@
 const ADD_POST = "ADD-POST";
 const CHANGE_TEXT = "CHANGE-TEXT";
+const SET_USERS_PROFILE = "SET_USERS_PROFILE";
 
 const initialState = {
     dataPost: [
@@ -11,8 +12,9 @@ const initialState = {
       {id: 5, text: "text 6", like: 11},
     ],
 
-    dataTextArea: "Write something!"
+    userProfile: null,
 
+    dataTextArea: "Write something!"
   }
 
 const reducerProfile = (state = initialState, action) => {
@@ -33,6 +35,11 @@ const reducerProfile = (state = initialState, action) => {
                   ...state,  
                   dataTextArea: action.writeText
                  }
+        case SET_USERS_PROFILE:
+          return {
+                  ...state,
+                  userProfile: action.userProfile,
+                 }
         default: return state;
     }
 }
@@ -41,3 +48,4 @@ export default reducerProfile;
 
 export const addPostActionCreator = () => ({type: ADD_POST});
 export const changeTextActionCreator = (text) => ({type: CHANGE_TEXT, writeText: text});
+export const setUserProfile = (userProfile) => ({type: SET_USERS_PROFILE, userProfile: userProfile});
