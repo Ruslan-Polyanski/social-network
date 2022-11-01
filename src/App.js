@@ -28,7 +28,7 @@ const App = ({dispatch,
       <Nav navItem={navItem} friends={friends}/>
       <div className="background">
         <Routes>
-          <Route path="/profile/*" element={<SectionContainer />} />
+          <Route path="/profile/:userId" element={<SectionContainer />} />
           <Route path="/dialogs/*" element={<DialogsContiner />} />
           <Route path="/news" element={<News/>} />
           <Route path="/music" element={<Music/>} />

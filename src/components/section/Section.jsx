@@ -2,16 +2,20 @@ import PostsContiner from "./posts/PostsContiner";
 import AddTextContiner from "./areaText/AddTextContiner";
 import "./Section.scss";
 import Preloader from "../preloader/Preloader";
+import basePhoto from "./../../assets/img/b540fd8cd94b9e2a8590411dcc866463.jpg";
 
 const Section = (props) => {
-    if(!props.photos.small){
-      return <Preloader/>
-    }
-    console.log(props.photos)
-    return (
+
+      if(!props.userProfile){
+        return <Preloader />
+      }
+
+      return (
         <section className="section">
           <div>
-            <img src={props.photos.small} alt="images" />
+            {
+              !props.userProfile.photos.small ? <img src={basePhoto} alt="phot" width="100px" /> : <img src={props.userProfile.photos.small} alt="images" />
+            }
           </div>
         <article className="article">
           <AddTextContiner />

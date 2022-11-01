@@ -2,22 +2,31 @@ import Section from "./Section.jsx";
 import React from "react";
 import axios from "axios";
 import  { connect }  from "react-redux/es/exports";
-import { setUserProfile } from "./../redux/reducerProfile.jsx"
+import { setUserProfile } from "./../redux/reducerProfile.jsx";
+import { useParams } from "react-router-dom";
 
 class SectionContainer extends React.Component {
-
+    
     componentDidMount(){
-        axios.get("https://social-network.samuraijs.com/api/1.0/profile/2")
+        let userId = this.props.userId;
+        axios.get("https://social-network.samuraijs.com/api/1.0/profile/" + userId)
              .then(response => {
                 this.props.setUserProfile(response.data)
             });
     }
-
+    
     render(){
         return (
-            <Section {...this.props.userProfile}/>
+            <Section {...this.props}/>
         )
     }
+}
+
+ const GetParams = (props) => {
+    const { userId } = useParams();
+    return (
+        <SectionContainer {...props}  userId={userId} />
+    )
 }
 
 const mapStateToProps = (state) => {
@@ -26,5 +35,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-
-export default connect(mapStateToProps, {setUserProfile})(SectionContainer);
+export default connect(mapStateToProps, {setUserProfile})(GetParams);
