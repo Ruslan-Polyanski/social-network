@@ -9,6 +9,9 @@ class SectionContainer extends React.Component {
     
     componentDidMount(){
         let userId = this.props.userId;
+        if(!userId){
+            userId = 2;
+        }
         axios.get("https://social-network.samuraijs.com/api/1.0/profile/" + userId)
              .then(response => {
                 this.props.setUserProfile(response.data)

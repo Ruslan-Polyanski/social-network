@@ -1,4 +1,4 @@
-import Header from "./components/header/Header";
+import HeaderContainer from "./components/header/HeaderContainer.jsx";
 import Nav from "./components/nav/Nav";
 import DialogsContiner from "./components/section/dialogs/DialogsContiner.jsx";
 import Footer from "./components/footer/Footer";
@@ -24,10 +24,11 @@ const App = ({dispatch,
 
   return (
     <div className="app">
-      <Header/>
+      <HeaderContainer />
       <Nav navItem={navItem} friends={friends}/>
       <div className="background">
         <Routes>
+          {/* <Route path="/profile/*" element={<SectionContainer />} /> */}
           <Route path="/profile/:userId" element={<SectionContainer />} />
           <Route path="/dialogs/*" element={<DialogsContiner />} />
           <Route path="/news" element={<News/>} />
