@@ -9,7 +9,9 @@ class UsersContiner extends React.Component {
 
     componentDidMount(){
         this.props.setIsPreloader(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.activePage}&count=${this.props.pageSizeUsers}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.activePage}&count=${this.props.pageSizeUsers}`, {
+            withCredentials: true
+        })
         .then(response => {
             this.props.setUsers(response.data.items)
             this.props.setTotalCount(response.data.totalCount)
@@ -21,7 +23,9 @@ class UsersContiner extends React.Component {
     onPageChange = (numper) => {
         this.props.setIsPreloader(true)
         this.props.setPage(numper)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${numper}&count=${this.props.pageSizeUsers}`)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${numper}&count=${this.props.pageSizeUsers}`, {
+            withCredentials: true
+        })
         .then(response => {
             this.props.setUsers(response.data.items)
             this.props.setIsPreloader(false)
