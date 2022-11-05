@@ -1,9 +1,9 @@
 import Section from "./Section.jsx";
 import React from "react";
-import axios from "axios";
 import  { connect }  from "react-redux/es/exports";
 import { setUserProfile } from "./../redux/reducerProfile.jsx";
 import { useParams } from "react-router-dom";
+import {usersAPI} from "./../api/api.jsx";
 
 class SectionContainer extends React.Component {
     
@@ -12,9 +12,8 @@ class SectionContainer extends React.Component {
         if(!userId){
             userId = 2;
         }
-        axios.get("https://social-network.samuraijs.com/api/1.0/profile/" + userId)
-             .then(response => {
-                this.props.setUserProfile(response.data)
+        usersAPI.getUserProfile(this.props.userId).then(data => {
+                this.props.setUserProfile(data)
             });
     }
     

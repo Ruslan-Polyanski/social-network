@@ -1,33 +1,29 @@
 import { connect } from "react-redux";
 import { follow, unfollow, setUsers, setPage, setTotalCount, setIsPreloader } from "../../redux/reducerUsers";
-import axios from "axios";
 import React from "react";
 import Users from "./Users.jsx";
 import Preloader from "./../../preloader/Preloader.jsx";
+import {usersAPI} from "./../../api/api.jsx";
 
 class UsersContiner extends React.Component {
 
     componentDidMount(){
         this.props.setIsPreloader(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.activePage}&count=${this.props.pageSizeUsers}`, {
-            withCredentials: true
-        })
-        .then(response => {
-            this.props.setUsers(response.data.items)
-            this.props.setTotalCount(response.data.totalCount)
+        usersAPI.getUsersToOnePage(this.props.activePage, this.props.pageSizeUsers)
+        .then(data => {
+            this.props.setUsers(data.items)
+            this.props.setTotalCount(data.totalCount)
             this.props.setIsPreloader(false)
         });
     }
 
     
-    onPageChange = (numper) => {
+    onPageChange = (number) => {
         this.props.setIsPreloader(true)
-        this.props.setPage(numper)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${numper}&count=${this.props.pageSizeUsers}`, {
-            withCredentials: true
-        })
-        .then(response => {
-            this.props.setUsers(response.data.items)
+        this.props.setPage(number)
+        usersAPI.getUsersToSomePage(number, this.props.pageSizeUsers)
+        .then(data => {
+            this.props.setUsers(data.items)
             this.props.setIsPreloader(false)
         });
     }
