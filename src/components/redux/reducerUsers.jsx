@@ -4,6 +4,7 @@ const SET_USERS = "SET_USERS";
 const SET_ACTIVE_PAGE = "SET_ACTIVE_PAGE";
 const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT";
 const SET_IS_PRELOADER = "SET_IS_PRELOADER";
+const SET_IS_DISABLED = "SET_IS_DISABLED";
 
 const initialState = {
     users: [],
@@ -11,6 +12,7 @@ const initialState = {
     totalUsersCount: 0,
     activePage: 1,
     isPreloader: false,
+    isDisabled: [],
 }
 
 const reduserUsers = (state = initialState, action) => {
@@ -55,6 +57,13 @@ const reduserUsers = (state = initialState, action) => {
                 ...state,
                 isPreloader: action.isPreloader,
             }
+        case SET_IS_DISABLED:
+            return {
+                ...state,
+                isDisabled: action.isTrue
+                            ? [...state.isDisabled, action.userId]
+                            : state.isDisabled.filter(userId => userId !== action.userId)
+            }
         default: return state;
     }
 }
@@ -67,3 +76,4 @@ export const setUsers = (users) => ({type: SET_USERS, users: users});
 export const setPage = (activePage) => ({type: SET_ACTIVE_PAGE, activePage: activePage});
 export const setTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount: totalUsersCount});
 export const setIsPreloader = (isPreloader) => ({type: SET_IS_PRELOADER, isPreloader: isPreloader});
+export const setIsDisabled = (isTrue, userId) => ({type: SET_IS_DISABLED, isTrue: isTrue, userId: userId});

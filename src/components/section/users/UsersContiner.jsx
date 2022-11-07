@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { follow, unfollow, setUsers, setPage, setTotalCount, setIsPreloader } from "../../redux/reducerUsers";
+import { follow, unfollow, setUsers, setPage, setTotalCount, setIsPreloader, setIsDisabled } from "../../redux/reducerUsers";
 import React from "react";
 import Users from "./Users.jsx";
 import Preloader from "./../../preloader/Preloader.jsx";
@@ -45,6 +45,8 @@ class UsersContiner extends React.Component {
                    activePage={this.props.activePage}
                    follow={this.props.follow}
                    unfollow={this.props.unfollow}
+                   isDisabled={this.props.isDisabled}
+                   setIsDisabled={this.props.setIsDisabled}
                 />
             </>
         );
@@ -59,7 +61,8 @@ const mapStateToProps = (state) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         activePage: state.usersPage.activePage,
         isPreloader: state.usersPage.isPreloader,
+        isDisabled: state.usersPage.isDisabled
     }
 }
 
-export default connect(mapStateToProps, {follow, unfollow, setUsers, setPage, setTotalCount, setIsPreloader})(UsersContiner);
+export default connect(mapStateToProps, {follow, unfollow, setUsers, setPage, setTotalCount, setIsPreloader, setIsDisabled})(UsersContiner);

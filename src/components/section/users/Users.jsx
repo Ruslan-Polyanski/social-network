@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { usersAPI } from "../../api/api";
 
 
-const Users = ({users, follow, unfollow, pages, activePage, onPageChange}) => {
+const Users = ({users, follow, unfollow, pages, activePage, onPageChange, setIsDisabled, isDisabled}) => {
 
 
     return (
@@ -25,20 +25,24 @@ const Users = ({users, follow, unfollow, pages, activePage, onPageChange}) => {
                         <div>
                             {
                                 user.followed ? 
-                                <button onClick={() => {
+                                <button disabled={isDisabled.some(item => item === user.id)} onClick={() => {
+                                    setIsDisabled(true, user.id)
                                     usersAPI.getUnfollow(user.id)
                                     .then(data => {
                                         if(data.resultCode === 0){
                                             unfollow(user.id)
                                         }
+                                        setIsDisabled(false, user.id)
                                     });
                                 }}>Unfollow</button> : 
-                                <button onClick={() => {
+                                <button disabled={isDisabled.some(item => item === user.id)} onClick={() => {
+                                    setIsDisabled(true, user.id)
                                     usersAPI.getFollow(user.id)
                                     .then(data => {
                                         if(data.resultCode === 0){
                                             follow(user.id)
                                         }
+                                        setIsDisabled(false, user.id)
                                     });
                                 }}>Follow</button>
                             }
