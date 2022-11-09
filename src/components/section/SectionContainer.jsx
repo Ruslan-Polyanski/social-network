@@ -1,9 +1,8 @@
 import Section from "./Section.jsx";
 import React from "react";
 import  { connect }  from "react-redux/es/exports";
-import { setUserProfile } from "./../redux/reducerProfile.jsx";
+import { setUserProfile, getUserProfileCreaterTunk } from "./../redux/reducerProfile.jsx";
 import { useParams } from "react-router-dom";
-import {usersAPI} from "./../api/api.jsx";
 
 class SectionContainer extends React.Component {
     
@@ -12,9 +11,7 @@ class SectionContainer extends React.Component {
         if(!userId){
             userId = 2;
         }
-        usersAPI.getUserProfile(this.props.userId).then(data => {
-                this.props.setUserProfile(data)
-            });
+        this.props.getUserProfileCreaterTunk(this.props.userId)
     }
     
     render(){
@@ -37,4 +34,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {setUserProfile})(GetParams);
+export default connect(mapStateToProps, {setUserProfile, getUserProfileCreaterTunk})(GetParams);

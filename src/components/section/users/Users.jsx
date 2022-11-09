@@ -1,10 +1,8 @@
 import style from "./Users.module.css";
 import userPhoto from "./../../../assets/img/b540fd8cd94b9e2a8590411dcc866463.jpg";
 import { NavLink } from "react-router-dom";
-import { usersAPI } from "../../api/api";
 
-
-const Users = ({users, follow, unfollow, pages, activePage, onPageChange, setIsDisabled, isDisabled}) => {
+const Users = ({users, pages, activePage, onPageChange, isDisabled, setFollow, setUnfollow}) => {
 
 
     return (
@@ -26,24 +24,10 @@ const Users = ({users, follow, unfollow, pages, activePage, onPageChange, setIsD
                             {
                                 user.followed ? 
                                 <button disabled={isDisabled.some(item => item === user.id)} onClick={() => {
-                                    setIsDisabled(true, user.id)
-                                    usersAPI.getUnfollow(user.id)
-                                    .then(data => {
-                                        if(data.resultCode === 0){
-                                            unfollow(user.id)
-                                        }
-                                        setIsDisabled(false, user.id)
-                                    });
+                                    setFollow(user.id)
                                 }}>Unfollow</button> : 
                                 <button disabled={isDisabled.some(item => item === user.id)} onClick={() => {
-                                    setIsDisabled(true, user.id)
-                                    usersAPI.getFollow(user.id)
-                                    .then(data => {
-                                        if(data.resultCode === 0){
-                                            follow(user.id)
-                                        }
-                                        setIsDisabled(false, user.id)
-                                    });
+                                    setUnfollow(user.id)
                                 }}>Follow</button>
                             }
                         </div>

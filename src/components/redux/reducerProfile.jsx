@@ -1,3 +1,5 @@
+import { usersAPI } from "./../api/api.jsx";
+
 const ADD_POST = "ADD-POST";
 const CHANGE_TEXT = "CHANGE-TEXT";
 const SET_USERS_PROFILE = "SET_USERS_PROFILE";
@@ -49,3 +51,13 @@ export default reducerProfile;
 export const addPostActionCreator = () => ({type: ADD_POST});
 export const changeTextActionCreator = (text) => ({type: CHANGE_TEXT, writeText: text});
 export const setUserProfile = (userProfile) => ({type: SET_USERS_PROFILE, userProfile: userProfile});
+
+export const getUserProfileCreaterTunk = (userId) => {
+    return (
+      (dispatch) => {
+        usersAPI.getUserProfile(userId).then(data => {
+          dispatch(setUserProfile(data))
+        });
+      }
+    )
+}

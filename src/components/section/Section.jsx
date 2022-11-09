@@ -14,7 +14,9 @@ const Section = (props) => {
         <section className="section">
           <div>
             {
-              !props.userProfile.photos.small ? <img src={basePhoto} alt="phot" width="100px" /> : <img src={props.userProfile.photos.small} alt="images" />
+              !props.userProfile.photos.small 
+                  ? <img src={basePhoto} alt="phot" width="100px" /> 
+                  : <img src={props.userProfile.photos.small} alt="images" />
             }
           </div>
         <article className="article">

@@ -13,14 +13,7 @@ import SectionContainer from "./components/section/SectionContainer";
 
 
 
-const App = ({dispatch, 
-              dataTextArea, 
-              dataContentTextArea, 
-              friends, 
-              dataPost, 
-              dataDialogs, 
-              dataText, 
-              navItem}) => {
+const App = ({friends, navItem}) => {
 
   return (
     <div className="app">

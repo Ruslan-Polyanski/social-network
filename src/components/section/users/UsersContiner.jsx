@@ -1,31 +1,18 @@
 import { connect } from "react-redux";
-import { follow, unfollow, setUsers, setPage, setTotalCount, setIsPreloader, setIsDisabled } from "../../redux/reducerUsers";
+import { getUsers, setFollow, setUnfollow} from "../../redux/reducerUsers";
 import React from "react";
 import Users from "./Users.jsx";
 import Preloader from "./../../preloader/Preloader.jsx";
-import {usersAPI} from "./../../api/api.jsx";
 
 class UsersContiner extends React.Component {
 
     componentDidMount(){
-        this.props.setIsPreloader(true)
-        usersAPI.getUsersToOnePage(this.props.activePage, this.props.pageSizeUsers)
-        .then(data => {
-            this.props.setUsers(data.items)
-            this.props.setTotalCount(data.totalCount)
-            this.props.setIsPreloader(false)
-        });
+        this.props.getUsers(this.props.activePage, this.props.pageSizeUsers)
     }
 
     
     onPageChange = (number) => {
-        this.props.setIsPreloader(true)
-        this.props.setPage(number)
-        usersAPI.getUsersToSomePage(number, this.props.pageSizeUsers)
-        .then(data => {
-            this.props.setUsers(data.items)
-            this.props.setIsPreloader(false)
-        });
+        this.props.getUsers(number, this.props.pageSizeUsers)
     }
 
     render(){
@@ -43,10 +30,9 @@ class UsersContiner extends React.Component {
                    pages={pages} 
                    onPageChange={this.onPageChange} 
                    activePage={this.props.activePage}
-                   follow={this.props.follow}
-                   unfollow={this.props.unfollow}
                    isDisabled={this.props.isDisabled}
-                   setIsDisabled={this.props.setIsDisabled}
+                   setFollow={this.props.setFollow}
+                   setUnfollow={this.props.setUnfollow}
                 />
             </>
         );
@@ -61,8 +47,8 @@ const mapStateToProps = (state) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         activePage: state.usersPage.activePage,
         isPreloader: state.usersPage.isPreloader,
-        isDisabled: state.usersPage.isDisabled
+        isDisabled: state.usersPage.isDisabled,
     }
 }
 
-export default connect(mapStateToProps, {follow, unfollow, setUsers, setPage, setTotalCount, setIsPreloader, setIsDisabled})(UsersContiner);
+export default connect(mapStateToProps, {getUsers, setFollow, setUnfollow})(UsersContiner);

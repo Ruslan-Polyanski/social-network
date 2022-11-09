@@ -1,3 +1,5 @@
+import { usersAPI } from "./../api/api.jsx";
+
 const SET_AUTHORIZE_DATA = "SET_AUTHORIZE_DATA";
 
 const initialState = {
@@ -27,3 +29,17 @@ export const setAuthorizeData = (id, login, email) => ({type: SET_AUTHORIZE_DATA
     login: login, 
     email: email,
 }});
+
+export const getRegistrationDataCreaterThunk = () => {
+    return (
+        (dispatch) => {
+            usersAPI.getRegistrationData()
+            .then(data => {
+               if(data.resultCode === 0){
+                   const {id, email, login} = data.data;
+                   dispatch(setAuthorizeData(id, login, email))
+               }
+            })
+        }
+    )
+}

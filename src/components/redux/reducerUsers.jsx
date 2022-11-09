@@ -1,3 +1,5 @@
+import {usersAPI} from "./../api/api.jsx";
+
 const FOLLOW = "FOLLOWD";
 const UNFOLLOW = "UNFOLLOWD";
 const SET_USERS = "SET_USERS";
@@ -77,3 +79,48 @@ export const setPage = (activePage) => ({type: SET_ACTIVE_PAGE, activePage: acti
 export const setTotalCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount: totalUsersCount});
 export const setIsPreloader = (isPreloader) => ({type: SET_IS_PRELOADER, isPreloader: isPreloader});
 export const setIsDisabled = (isTrue, userId) => ({type: SET_IS_DISABLED, isTrue: isTrue, userId: userId});
+
+export const getUsers = (activePage, pageSizeUsers) => {
+    return (
+        (dispatch) => {
+            dispatch(setIsPreloader(true))
+            usersAPI.getUsersToOnePage(activePage, pageSizeUsers)
+            .then(data => {
+                dispatch(setPage(activePage))
+                dispatch(setUsers(data.items))
+                dispatch(setTotalCount(data.totalCount))
+                dispatch(setIsPreloader(false))
+            });
+        }
+    )
+}
+
+export const setFollow = (userId) => {
+    return (
+        (dispatch) => {
+            dispatch(setIsDisabled(true, userId))
+            usersAPI.getUnfollow(userId)
+            .then(data => {
+                if(data.resultCode === 0){
+                    dispatch(unfollow(userId))
+                }
+                dispatch(setIsDisabled(false, userId))
+            });
+        }
+    )
+}
+
+export const setUnfollow = (userId) => {
+    return (
+        (dispatch) => {
+            dispatch(setIsDisabled(true, userId))
+            usersAPI.getFollow(userId)
+            .then(data => {
+                if(data.resultCode === 0){
+                    dispatch(follow(userId)) 
+                }
+                dispatch(setIsDisabled(false, userId))
+            });
+        }
+    )
+}
