@@ -41,6 +41,7 @@ const mapStateToProps = (state) => {
         dataContentTextArea: state.messages.dataContentTextArea,
         dataDialogs: state.messages.dataDialogs,
         dataText: state.messages.dataText,
+        authorized: state.authoriz.authorized,
     }
 }
 

@@ -2,8 +2,9 @@ import React from "react";
 import style from "./Dialogs.module.css";
 import DialogItem from "./dilagItem/DialogItem";
 import DialogText from "./dialogText/DialogText";
+import { Navigate } from "react-router-dom";
 
-const Dialogs = ({onAddContent, onChangeContent, dataContentTextArea, dataDialogs, dataText}) => {
+const Dialogs = ({onAddContent, onChangeContent, dataContentTextArea, dataDialogs, dataText, authorized}) => {
 
     const changeContent = (event) => {
         const text = event.target.value;
@@ -12,6 +13,10 @@ const Dialogs = ({onAddContent, onChangeContent, dataContentTextArea, dataDialog
     
     const addContent = () => {
         onAddContent()
+    }
+
+    if(!authorized){
+        return <Navigate to="/login" />
     }
 
     return (

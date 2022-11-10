@@ -2,7 +2,7 @@ import Section from "./Section.jsx";
 import React from "react";
 import  { connect }  from "react-redux/es/exports";
 import { setUserProfile, getUserProfileCreaterTunk } from "./../redux/reducerProfile.jsx";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 
 class SectionContainer extends React.Component {
     
@@ -15,6 +15,11 @@ class SectionContainer extends React.Component {
     }
     
     render(){
+
+        if(!this.props.authorized){
+            return <Navigate to="/login" />
+        }
+        
         return (
             <Section {...this.props}/>
         )
@@ -31,6 +36,7 @@ class SectionContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         userProfile: state.profile.userProfile,
+        authorized: state.authoriz.authorized,
     }
 }
 
