@@ -22,7 +22,7 @@ const App = ({friends, navItem}) => {
       <Nav navItem={navItem} friends={friends}/>
       <div className="background">
         <Routes>
-          <Route path="/profile" element={<SectionContainer />} />
+          {/* <Route path="/profile" element={<SectionContainer />} /> */}
           <Route path="/profile/:userId" element={<SectionContainer />} />
           <Route path="/dialogs/*" element={<DialogsContiner />} />
           <Route path="/news" element={<News/>} />
@@ -30,7 +30,7 @@ const App = ({friends, navItem}) => {
           <Route path="/settings" element={<Settings/>} />
           <Route path="/users" element={<UsersContiner/>} />
           <Route path="/login" element={<Login/>} />
-          <Route path="*" element={"not found"} />
+          {/* <Route path="*" element={"not found"} /> */}
         </Routes>
       </div>
       <Footer/>

@@ -1,8 +1,9 @@
-import { usersAPI } from "./../api/api.jsx";
+import { usersAPI, profileAPI } from "./../api/api.jsx";
 
 const ADD_POST = "ADD-POST";
 const CHANGE_TEXT = "CHANGE-TEXT";
 const SET_USERS_PROFILE = "SET_USERS_PROFILE";
+const SET_STATUS_PROFILE = "SET_STATUS_PROFILE";
 
 const initialState = {
     dataPost: [
@@ -16,7 +17,9 @@ const initialState = {
 
     userProfile: null,
 
-    dataTextArea: "Write something!"
+    dataTextArea: "Write something!",
+
+    status: "STATUS IS FALSE",
   }
 
 const reducerProfile = (state = initialState, action) => {
@@ -42,6 +45,11 @@ const reducerProfile = (state = initialState, action) => {
                   ...state,
                   userProfile: action.userProfile,
                  }
+        case SET_STATUS_PROFILE:
+          return {
+                  ...state,
+                  status: action.status,
+                 }
         default: return state;
     }
 }
@@ -51,6 +59,7 @@ export default reducerProfile;
 export const addPostActionCreator = () => ({type: ADD_POST});
 export const changeTextActionCreator = (text) => ({type: CHANGE_TEXT, writeText: text});
 export const setUserProfile = (userProfile) => ({type: SET_USERS_PROFILE, userProfile: userProfile});
+export const setStatusProfile = (status) => ({type: SET_STATUS_PROFILE, status: status});
 
 export const getUserProfileCreaterTunk = (userId) => {
     return (
@@ -58,6 +67,16 @@ export const getUserProfileCreaterTunk = (userId) => {
         usersAPI.getUserProfile(userId).then(data => {
           dispatch(setUserProfile(data))
         });
+      }
+    )
+}
+
+export const getStatusProfileCreateTunk = (userId) => {
+    return (
+      (dispatch) => {
+        profileAPI.getStatus(userId).then(status => {
+          dispatch(setStatusProfile(status))
+        })
       }
     )
 }

@@ -21,7 +21,7 @@ const Section = (props) => {
             }
           </div>
         <article className="article">
-          <ProfileStatus status={"Hello my friend!"} />
+          <ProfileStatus status={props.status} />
           <AddTextContiner />
           <PostsContiner />
         </article>
