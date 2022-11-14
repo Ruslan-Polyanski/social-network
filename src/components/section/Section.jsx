@@ -21,7 +21,7 @@ const Section = (props) => {
             }
           </div>
         <article className="article">
-          <ProfileStatus status={props.status} />
+          <ProfileStatus status={props.status} updateStatusProfileCreateThunk={props.updateStatusProfileCreateThunk} />
           <AddTextContiner />
           <PostsContiner />
         </article>

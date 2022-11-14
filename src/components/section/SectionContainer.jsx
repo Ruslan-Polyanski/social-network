@@ -1,7 +1,7 @@
 import Section from "./Section.jsx";
 import React from "react";
 import  { connect }  from "react-redux/es/exports";
-import { setUserProfile, getUserProfileCreaterTunk, getStatusProfileCreateTunk } from "./../redux/reducerProfile.jsx";
+import { setUserProfile, getUserProfileCreaterTunk, getStatusProfileCreateTunk, updateStatusProfileCreateThunk } from "./../redux/reducerProfile.jsx";
 import { WithAuthRedirect } from "./../HOC/WithAuthRedirect";
 import { compose } from "redux";
 import {WithGetParam} from './../HOC/WithGetParam';
@@ -34,6 +34,6 @@ const mapStateToProps = (state) => {
 
 export default compose(
     WithGetParam,
-    connect(mapStateToProps, {setUserProfile, getUserProfileCreaterTunk, getStatusProfileCreateTunk}),
+    connect(mapStateToProps, {setUserProfile, getUserProfileCreaterTunk, getStatusProfileCreateTunk, updateStatusProfileCreateThunk}),
     WithAuthRedirect
 )(SectionContainer)

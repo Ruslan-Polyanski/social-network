@@ -4,6 +4,7 @@ class ProfileStatus extends React.Component {
 
     state = {
         editMode: false,
+        status: this.props.status,
     }
 
     editElement = () => {
@@ -16,6 +17,13 @@ class ProfileStatus extends React.Component {
         this.setState({
             editMode: false,
         })
+        this.props.updateStatusProfileCreateThunk(this.state.status);
+    }
+
+    onStatusChande = (event) => {
+        this.setState({
+            status: event.currentTarget.value,
+        })
     }
 
         render(){
@@ -24,7 +32,7 @@ class ProfileStatus extends React.Component {
                 
                 !this.state.editMode 
                 ? <div onDoubleClick={this.editElement}>{this.props.status}</div> 
-                : <div><input autoFocus onBlur={this.unEditEllement} value={this.props.status} /></div> 
+                : <div><input onChange={this.onStatusChande} autoFocus onBlur={this.unEditEllement} value={this.state.status} /></div> 
             )
                 
 
