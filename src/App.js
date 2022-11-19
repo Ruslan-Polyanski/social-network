@@ -10,7 +10,7 @@ import { Route, Routes } from "react-router-dom";
 import Settings from "./components/section/settings/Settings";
 import UsersContiner from "./components/section/users/UsersContiner.jsx";
 import SectionContainer from "./components/section/SectionContainer";
-import Login from "./components/login/Login.jsx";
+import LoginContainer from "./components/login/LoginContainer"
 
 
 
@@ -29,7 +29,7 @@ const App = ({friends, navItem}) => {
           <Route path="/music" element={<Music/>} />
           <Route path="/settings" element={<Settings/>} />
           <Route path="/users" element={<UsersContiner/>} />
-          <Route path="/login" element={<Login/>} />
+          <Route path="/login" element={<LoginContainer/>} />
           {/* <Route path="*" element={"not found"} /> */}
         </Routes>
       </div>

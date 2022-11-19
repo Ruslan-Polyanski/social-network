@@ -1,4 +1,4 @@
-import { usersAPI } from "./../api/api.jsx";
+import { authAPI } from "./../api/api.jsx";
 
 const SET_AUTHORIZE_DATA = "SET_AUTHORIZE_DATA";
 
@@ -33,13 +33,36 @@ export const setAuthorizeData = (id, login, email) => ({type: SET_AUTHORIZE_DATA
 export const getRegistrationDataCreaterThunk = () => {
     return (
         (dispatch) => {
-            usersAPI.getRegistrationData()
+            authAPI.getRegistrationData()
             .then(data => {
                if(data.resultCode === 0){
                    const {id, email, login} = data.data;
                    dispatch(setAuthorizeData(id, login, email))
                }
             })
+        }
+    )
+}
+
+export const getAuthCreaterThunk = (email, password, rememberMe) => {
+    return (
+        (dispatch) => {
+            authAPI.getLogIn(email, password, rememberMe)
+             .then((data) => {
+                if(data.resultCode === 0){
+                    
+                    authAPI.getRegistrationData()
+                    .then(data => {
+                       if(data.resultCode === 0){
+                           const {id, email, login} = data.data;
+                           dispatch(setAuthorizeData(id, login, email))
+                       }
+                    })
+                    
+                } else {
+                    console.log(data.messages)
+                }
+             })
         }
     )
 }
