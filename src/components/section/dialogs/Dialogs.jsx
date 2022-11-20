@@ -2,16 +2,16 @@ import React from "react";
 import style from "./Dialogs.module.css";
 import DialogItem from "./dilagItem/DialogItem";
 import DialogText from "./dialogText/DialogText";
+import { Formik, Form, Field } from "formik";
+// import * as yap from "yap";
 
-const Dialogs = ({onAddContent, onChangeContent, dataContentTextArea, dataDialogs, dataText}) => {
+const Dialogs = ({addContentCreatorThunk, dataDialogs, dataText}) => {
 
-    const changeContent = (event) => {
-        const text = event.target.value;
-        onChangeContent(text)
-    }
-    
-    const addContent = () => {
-        onAddContent()
+    const submitForm = (values, {setSubmitting}) => {
+        setTimeout(() => {
+            addContentCreatorThunk(values.dataTextArea);
+            setSubmitting(false);
+          }, 400);
     }
 
 
@@ -27,8 +27,14 @@ const Dialogs = ({onAddContent, onChangeContent, dataContentTextArea, dataDialog
                     return <DialogText key={item.id} id={item.id} text={item.text}/>
                 })}
                 <div className="addMessages">
-                    <textarea onChange={changeContent} value={dataContentTextArea}></textarea>
-                    <button onClick={addContent}>Add messages</button>
+                    <Formik initialValues={{dataContentTextArea: "",}} onSubmit={submitForm}>
+                        {({isSubmitting}) => (
+                            <Form>
+                                <Field as="textarea" type="text" name="dataContentTextArea" placeholder="Your messages?" /><br/>
+                                <button type="submit" disabled={isSubmitting}>Add messages</button>
+                            </Form>
+                        )}
+                    </Formik>
                 </div>
            </div>
         </div>

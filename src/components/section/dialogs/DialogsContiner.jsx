@@ -1,4 +1,4 @@
-import { addContentActionCreator, changeContentActionCreator } from "./../../redux/reducerMessages.jsx";
+import { addContentCreatorThunk } from "./../../redux/reducerMessages.jsx";
 import Dialogs from "./Dialogs";
 import { connect } from "react-redux/es/exports";
 import {WithAuthRedirect} from "./../../HOC/WithAuthRedirect";
@@ -14,20 +14,7 @@ const mapStateToProps = (state) => {
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onChangeContent: (text) => {
-            const action = changeContentActionCreator(text);
-            dispatch(action)
-        },
-        onAddContent: () => {
-            const action = addContentActionCreator()
-            dispatch(action)
-        }
-    }
-}
-
 export default compose(
-    connect(mapStateToProps, mapDispatchToProps),
+    connect(mapStateToProps, {addContentCreatorThunk}),
     WithAuthRedirect
 )(Dialogs)

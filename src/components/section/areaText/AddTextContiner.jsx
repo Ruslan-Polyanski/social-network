@@ -1,26 +1,24 @@
-import AddText from "./AddText"
-import {changeTextActionCreator, addPostActionCreator} from "./../../redux/reducerProfile.jsx";
 import { connect } from "react-redux/es/exports";
+import { compose } from "redux";
+import React from "react";
+import ProfileForm from "./ProfileForm";
+import {addPostCreateThunk} from "./../../redux/reducerProfile.jsx";
+
+class AddTextContiner extends React.Component {
+
+    render(){
+        return (
+            <ProfileForm {...this.props} />
+        )
+    }
+}
 
 const mapStateToProps = (state) => {
     return {
-        dataTextArea: state.profile.dataTextArea,
+
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onShowText: (myText) => {
-            const action = changeTextActionCreator(myText)
-            dispatch(action)
-        },
-        onAddText: () => {
-            const action = addPostActionCreator();
-            dispatch(action)
-        }
-    }
-}
-
-const AddTextContiner = connect(mapStateToProps, mapDispatchToProps)(AddText);
-
-export default AddTextContiner;
+export default compose(
+    connect(mapStateToProps, {addPostCreateThunk})
+)(AddTextContiner)

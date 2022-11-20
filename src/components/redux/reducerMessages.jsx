@@ -1,5 +1,4 @@
 const ADD_CONTENT_DIALOG = "ADD-CONTENT";
-const CHANGE_CONTENT_DIALOG = "CHANGE-CONTENT-DIALOG";
 
 const initialState = {
 
@@ -21,8 +20,6 @@ const initialState = {
       {id: 5, text: "Hello everyone!"},
     ],
 
-    dataContentTextArea: "Write somethihg..."
-
   }
 
 const reducerMessages = (state = initialState, action) => {
@@ -30,23 +27,24 @@ const reducerMessages = (state = initialState, action) => {
         case ADD_CONTENT_DIALOG: 
         const newMessage = {
             id: state.dataText.length, 
-            text: state.dataContentTextArea
+            text: action.dataContentTextArea
           }
           return {
                   ...state,
                   dataText: [...state.dataText, newMessage],
-                  dataContentTextArea: "",
                  }
-        case CHANGE_CONTENT_DIALOG: 
-          return {
-            ...state,
-            dataContentTextArea: action.writeText,
-          }
         default: return state;
     }
 }
 
 export default reducerMessages;
 
-export const addContentActionCreator = () => ({type: ADD_CONTENT_DIALOG});
-export const changeContentActionCreator = (text) => ({type: CHANGE_CONTENT_DIALOG, writeText: text});
+export const addContentActionCreator = (dataContentTextArea) => ({type: ADD_CONTENT_DIALOG, dataContentTextArea: dataContentTextArea});
+
+export const addContentCreatorThunk = (dataContentTextArea) => {
+  return (
+    (dispatch) => {
+      dispatch(addContentActionCreator(dataContentTextArea))
+    }
+  )
+}

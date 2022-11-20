@@ -14,7 +14,7 @@ const FormLogin = ({getAuthCreaterThunk}) => {
                 {({isSubmitting}) => (                    
                     <Form>
                         <Field type="text" name="email" placeholder="email" /><br/>
-                        <Field type="teext" name="password" placeholder="password" /><br/>
+                        <Field type="text" name="password" placeholder="password" /><br/>
                         <Field type="checkBox" name="rememberMe" /> remember me<br/>
                         <button type="submit" disabled={isSubmitting}>Submit</button>
                     </Form>
