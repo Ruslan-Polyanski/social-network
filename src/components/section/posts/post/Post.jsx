@@ -1,4 +1,5 @@
 import "./Post.scss";
+import React from "react";
 
 const Post = ({text, like}) => {
     return (

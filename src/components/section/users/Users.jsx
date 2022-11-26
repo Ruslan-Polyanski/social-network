@@ -1,6 +1,7 @@
 import style from "./Users.module.css";
 import userPhoto from "./../../../assets/img/b540fd8cd94b9e2a8590411dcc866463.jpg";
 import { NavLink } from "react-router-dom";
+import React from "react";
 
 const Users = ({users, pages, activePage, onPageChange, isDisabled, setFollow, setUnfollow}) => {
 

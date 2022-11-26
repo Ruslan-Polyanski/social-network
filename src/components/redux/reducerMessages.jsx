@@ -1,3 +1,5 @@
+
+
 const ADD_CONTENT_DIALOG = "ADD-CONTENT";
 
 const initialState = {
@@ -42,6 +44,7 @@ export default reducerMessages;
 export const addContentActionCreator = (dataContentTextArea) => ({type: ADD_CONTENT_DIALOG, dataContentTextArea: dataContentTextArea});
 
 export const addContentCreatorThunk = (dataContentTextArea) => {
+  
   return (
     (dispatch) => {
       dispatch(addContentActionCreator(dataContentTextArea))

@@ -11,7 +11,7 @@ import Settings from "./components/section/settings/Settings";
 import UsersContiner from "./components/section/users/UsersContiner.jsx";
 import SectionContainer from "./components/section/SectionContainer";
 import LoginContainer from "./components/login/LoginContainer"
-
+import React from "react";
 
 
 const App = ({friends, navItem}) => {

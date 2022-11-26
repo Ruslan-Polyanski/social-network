@@ -1,6 +1,7 @@
 import "./Nav.scss";
 import { NavLink } from "react-router-dom";
 import Friends from "./friends/Friends";
+import React from "react";
 
 const Nav = ({navItem, friends}) => {
 

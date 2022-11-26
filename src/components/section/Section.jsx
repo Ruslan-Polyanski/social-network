@@ -4,6 +4,7 @@ import "./Section.scss";
 import Preloader from "../preloader/Preloader";
 import basePhoto from "./../../assets/img/b540fd8cd94b9e2a8590411dcc866463.jpg";
 import ProfileStatus from "./../section/ProfileStatus.jsx";
+import React from "react";
 
 const Section = (props) => {
 

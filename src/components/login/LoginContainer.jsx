@@ -18,6 +18,7 @@ class LoginContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         id: state.authoriz.id,
+        dataMessages: state.authoriz.dataMessages,
     }
 }
 

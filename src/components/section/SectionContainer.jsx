@@ -7,11 +7,11 @@ import { compose } from "redux";
 import {WithGetParam} from './../HOC/WithGetParam';
 
 class SectionContainer extends React.Component {
-    
+
     componentDidMount(){
         let userId = this.props.userId;
         if(!userId){
-            userId = 26436;
+            userId = 2;
         }
         this.props.getUserProfileCreaterTunk(this.props.userId)
         this.props.getStatusProfileCreateTunk(this.props.userId)

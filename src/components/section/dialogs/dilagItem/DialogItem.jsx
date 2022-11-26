@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import style from "./DialogItem.module.css";
+import React from "react";
 
 const DialogItem = ({id, name}) => {
     return (

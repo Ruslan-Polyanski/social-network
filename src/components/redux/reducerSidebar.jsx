@@ -1,4 +1,5 @@
 
+
 const initialState = {
     friends: [
       {id: 0, name: "Olga"},

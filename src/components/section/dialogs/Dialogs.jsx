@@ -3,16 +3,21 @@ import style from "./Dialogs.module.css";
 import DialogItem from "./dilagItem/DialogItem";
 import DialogText from "./dialogText/DialogText";
 import { Formik, Form, Field } from "formik";
-// import * as yap from "yap";
+import * as yup from "yup";
 
 const Dialogs = ({addContentCreatorThunk, dataDialogs, dataText}) => {
 
     const submitForm = (values, {setSubmitting}) => {
+        
         setTimeout(() => {
-            addContentCreatorThunk(values.dataTextArea);
+            addContentCreatorThunk(values.dataContentTextArea);
             setSubmitting(false);
           }, 400);
     }
+
+    const messagesShemaValidate = yup.object().shape({
+        dataContentTextArea: yup.string().min(2, "Too short!").max(30, 'Too Long!').required('Required'),
+    });
 
 
     return (
@@ -27,10 +32,11 @@ const Dialogs = ({addContentCreatorThunk, dataDialogs, dataText}) => {
                     return <DialogText key={item.id} id={item.id} text={item.text}/>
                 })}
                 <div className="addMessages">
-                    <Formik initialValues={{dataContentTextArea: "",}} onSubmit={submitForm}>
-                        {({isSubmitting}) => (
+                    <Formik initialValues={{dataContentTextArea: "",}} onSubmit={submitForm} validationSchema={messagesShemaValidate}>
+                        {({errors, isSubmitting}) => (
                             <Form>
-                                <Field as="textarea" type="text" name="dataContentTextArea" placeholder="Your messages?" /><br/>
+                                <Field as="textarea" type="text" name="dataContentTextArea" placeholder="Your messages?" className={errors.dataContentTextArea ? style.error : null} /><br/>
+                                {errors.dataContentTextArea ? <span className={style.messages}>{errors.dataContentTextArea}</span> : null}<br />
                                 <button type="submit" disabled={isSubmitting}>Add messages</button>
                             </Form>
                         )}

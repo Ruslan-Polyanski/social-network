@@ -1,4 +1,5 @@
 
+
 const initialState = [
     {id: 0, path: "profile", text: "Profile"},
     {id: 1, path: "dialogs", text: "Messages"},

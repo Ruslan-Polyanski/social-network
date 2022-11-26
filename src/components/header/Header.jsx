@@ -1,5 +1,6 @@
 import "./Header.scss";
 import { NavLink } from "react-router-dom";
+import React from "react";
 
 const Header = ({login, authorized}) => {
     return (
