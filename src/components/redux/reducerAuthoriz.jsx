@@ -2,6 +2,7 @@ import { authAPI } from "./../api/api.jsx";
 
 const SET_AUTHORIZE_DATA = "SET_AUTHORIZE_DATA";
 const  SET_AUTHORIZE_MESSAGE = "SET_AUTHORIZE_MESSAGE";
+const SET_LOG_OUT = "SET_LOG_OUT";
 
 const initialState = {
     id: null,
@@ -25,6 +26,14 @@ const reducerAuthoriz = (state = initialState, action) => {
                 ...state,
                 dataMessages: action.dataMessages,
             }
+        case SET_LOG_OUT:
+            return {
+                ...state,
+                id: null,
+                login: null,
+                email: null,
+                authorized: false,
+            }
         default: return state;
     }
 }
@@ -38,6 +47,20 @@ export const setAuthorizeData = (id, login, email) => ({type: SET_AUTHORIZE_DATA
 }});
 
 export const setAuthMessages = (dataMessages) => ({type: SET_AUTHORIZE_MESSAGE, dataMessages: dataMessages});
+export const setDeleteLogOut = () => ({type: SET_LOG_OUT});
+
+export const logOutThunkCreator = () => {
+    return (
+        (dispatch) => {
+            authAPI.getLogOut()
+                   .then(data => {
+                        if(data.resultCode === 0){
+                            dispatch(setDeleteLogOut())
+                        }
+                   })
+        }
+    )
+}
 
 export const getRegistrationDataCreaterThunk = () => {
     return (
