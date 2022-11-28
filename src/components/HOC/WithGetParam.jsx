@@ -4,12 +4,11 @@ import React from "react";
 
 export const WithGetParam = (Component) => {
 
-    const GetParam = (props) => {
+     const GetParam = (props) => {
         const { userId } = useParams();
         return (
-            <Component {...props}  userId={userId} />
+            <Component {...props} userId={userId} />
         )
     }
-
     return GetParam;
 }

@@ -65,13 +65,13 @@ export const logOutThunkCreator = () => {
 export const getRegistrationDataCreaterThunk = () => {
     return (
         (dispatch) => {
-            authAPI.getRegistrationData()
-            .then(data => {
-               if(data.resultCode === 0){
-                   const {id, email, login} = data.data;
-                   dispatch(setAuthorizeData(id, login, email))
-               }
-            })
+            return authAPI.getRegistrationData()
+                    .then(data => {
+                        if(data.resultCode === 0){
+                            const {id, email, login} = data.data;
+                            dispatch(setAuthorizeData(id, login, email))
+                        }
+                })
         }
     )
 }

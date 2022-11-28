@@ -12,30 +12,53 @@ import UsersContiner from "./components/section/users/UsersContiner.jsx";
 import SectionContainer from "./components/section/SectionContainer";
 import LoginContainer from "./components/login/LoginContainer"
 import React from "react";
+import { initialThunkCreator } from "./components/redux/reducerApp";
+import  { connect }  from "react-redux/es/exports";
+import { compose } from "redux";
+import Preloader from "./components/preloader/Preloader.jsx";
 
 
-const App = ({friends, navItem}) => {
+class App extends React.Component {
 
-  return (
-    <div className="app">
-      <HeaderContainer />
-      <Nav navItem={navItem} friends={friends}/>
-      <div className="background">
-        <Routes>
-          {/* <Route path="/profile" element={<SectionContainer />} /> */}
-          <Route path="/profile/:userId" element={<SectionContainer />} />
-          <Route path="/dialogs/*" element={<DialogsContiner />} />
-          <Route path="/news" element={<News/>} />
-          <Route path="/music" element={<Music/>} />
-          <Route path="/settings" element={<Settings/>} />
-          <Route path="/users" element={<UsersContiner/>} />
-          <Route path="/login" element={<LoginContainer/>} />
-          {/* <Route path="*" element={"not found"} /> */}
-        </Routes>
+  componentDidMount(){
+    this.props.initialThunkCreator()
+  }
+
+  render(){
+    if(!this.props.initial){
+      return <Preloader />
+    }
+    return (
+      <div className="app">
+        <HeaderContainer />
+        <Nav navItem={this.props.navItem} friends={this.props.friends}/>
+        <div className="background">
+          <Routes>
+            {/* <Route path="/profile" element={<SectionContainer />} /> */}
+            <Route path="/profile/:userId" element={<SectionContainer />} />
+            <Route path="/dialogs/*" element={<DialogsContiner />} />
+            <Route path="/news" element={<News/>} />
+            <Route path="/music" element={<Music/>} />
+            <Route path="/settings" element={<Settings/>} />
+            <Route path="/users" element={<UsersContiner/>} />
+            <Route path="/login" element={<LoginContainer/>} />
+            {/* <Route path="*" element={"not found"} /> */}
+          </Routes>
+        </div>
+        <Footer/>
       </div>
-      <Footer/>
-    </div>
-  )
+    )
+  }
+
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    initial: state.app.initial,
+  }
+}
+
+export default compose(
+  connect(mapStateToProps, {initialThunkCreator})
+)(App)
+

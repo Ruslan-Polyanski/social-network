@@ -12,6 +12,9 @@ class SectionContainer extends React.Component {
         let userId = this.props.userId;
         if(!userId){
             userId = 2;
+            if(!userId){
+                this.props.history.push("/login")
+            }
         }
         this.props.getUserProfileCreaterTunk(this.props.userId)
         this.props.getStatusProfileCreateTunk(this.props.userId)

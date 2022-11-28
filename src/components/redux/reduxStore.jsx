@@ -6,6 +6,7 @@ import reducerSidebar from "./reducerSidebar";
 import reducerNavItem from "./reducerNavItem";
 import reducerUsers from "./reducerUsers";
 import reducerAuthoriz from "./reducerAuthoriz";
+import reducerApp from "./reducerApp";
 
 
 const reducers = combineReducers({
@@ -15,6 +16,7 @@ const reducers = combineReducers({
     navItem: reducerNavItem,
     usersPage: reducerUsers,
     authoriz: reducerAuthoriz,
+    app: reducerApp,
 });
 
 const store = createStore(reducers, applyMiddleware(thunk));
