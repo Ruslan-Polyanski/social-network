@@ -10,6 +10,7 @@ import { Route, Routes } from "react-router-dom";
 import Settings from "./components/section/settings/Settings";
 import UsersContiner from "./components/section/users/UsersContiner.jsx";
 import SectionContainer from "./components/section/SectionContainer";
+import SectionContainerProfile from "./components/section/SectionContainerProfile";
 import LoginContainer from "./components/login/LoginContainer"
 import React from "react";
 import { initialThunkCreator } from "./components/redux/reducerApp";
@@ -34,7 +35,7 @@ class App extends React.Component {
         <Nav navItem={this.props.navItem} friends={this.props.friends}/>
         <div className="background">
           <Routes>
-            {/* <Route path="/profile" element={<SectionContainer />} /> */}
+            <Route path="/profile" element={<SectionContainerProfile />} />
             <Route path="/profile/:userId" element={<SectionContainer />} />
             <Route path="/dialogs/*" element={<DialogsContiner />} />
             <Route path="/news" element={<News/>} />
