@@ -19,6 +19,7 @@ class UsersContiner extends React.Component {
     }
 
     render(){
+        console.log("render")
         const amountPages = Math.ceil(this.props.totalUsersCount / this.props.pageSizeUsers);
         const pages = [];
 

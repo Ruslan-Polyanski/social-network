@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-const ProfileStatus = (props) => {
+const ProfileStatus = React.memo((props) => {
 
     const [editMode, setEditMode] = useState(false);
     const [status, setStatus] = useState(props.status);
@@ -24,11 +24,16 @@ const ProfileStatus = (props) => {
     },[props.status])
 
     return (
-        ! editMode 
-        ? <div onDoubleClick={editElement}>{status}</div> 
-        : <div><input onChange={onStatusChande} autoFocus onBlur={unEditEllement} value={status} /></div> 
+        <>
+        {console.log("render")}
+        {
+             ! editMode 
+             ? <div onDoubleClick={editElement}>{status}</div> 
+             : <div><input onChange={onStatusChande} autoFocus onBlur={unEditEllement} value={status} /></div> 
+        }
+        </>
     )
-}
+});
 
 export default ProfileStatus;
 
