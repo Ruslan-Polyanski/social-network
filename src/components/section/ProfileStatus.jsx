@@ -25,7 +25,6 @@ const ProfileStatus = React.memo((props) => {
 
     return (
         <>
-        {console.log("render")}
         {
              ! editMode 
              ? <div onDoubleClick={editElement}>{status}</div> 
