@@ -5,7 +5,6 @@ import React from "react";
 
 const Users = ({users, pages, activePage, onPageChange, isDisabled, setFollow, setUnfollow}) => {
 
-
     return (
         <>  
         <div className={style.buttonPages}>
