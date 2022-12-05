@@ -17,27 +17,26 @@ const initialState = {
     isDisabled: [],
 }
 
+const isFollowed = (users, id, actionUser, truth) => {
+    return users.map((user) => {
+                if(user[id] === actionUser){
+                    return {...user, followed: truth}
+                }
+                return user;
+            })
+}
+
 const reduserUsers = (state = initialState, action) => {
     switch (action.type){
         case FOLLOW: 
             return {
                 ...state,
-                users: state.users.map((user) => {
-                    if(user.id === action.userId){
-                        return {...user, followed: true}
-                    }
-                    return user;
-                }),
+                users: isFollowed(state.users, "id", action.userId, true),
             }
         case UNFOLLOW: 
             return {
                 ...state,
-                users: state.users.map((user) => {
-                    if(user.id === action.userId){
-                        return {...user, followed: false}
-                    }
-                    return user;
-                })
+                users: isFollowed(state.users, "id", action.userId, false),
             }
         case SET_USERS:
             return {
