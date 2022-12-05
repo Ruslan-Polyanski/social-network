@@ -64,37 +64,35 @@ export const logOutThunkCreator = () => {
 
 export const getRegistrationDataCreaterThunk = () => {
     return (
-        (dispatch) => {
-            return authAPI.getRegistrationData()
-                    .then(data => {
-                        if(data.resultCode === 0){
-                            const {id, email, login} = data.data;
-                            dispatch(setAuthorizeData(id, login, email))
-                        }
-                })
+        async (dispatch) => {
+            const data = await authAPI.getRegistrationData();
+
+            if(data.resultCode === 0){
+                const {id, email, login} = data.data;
+                dispatch(setAuthorizeData(id, login, email))
+            }
         }
     )
 }
 
 export const getAuthCreaterThunk = (email, password, rememberMe) => {
     return (
-        (dispatch) => {
-            authAPI.getLogIn(email, password, rememberMe)
-             .then((data) => {
-                if(data.resultCode === 0){
-                    authAPI.getRegistrationData()
-                    .then(data => {
-                       if(data.resultCode === 0){
-                           const {id, email, login} = data.data;
-                           dispatch(setAuthorizeData(id, login, email))
-                           dispatch(setAuthMessages(null))
-                       }
-                    })
+        async (dispatch) => {
+                    const data = await authAPI.getLogIn(email, password, rememberMe);
                     
-                } else {
-                    dispatch(setAuthMessages(data.messages[0]))
-                }
-             })
+                    if(data.resultCode === 0){
+                        authAPI.getRegistrationData()
+                        .then(data => {
+                        if(data.resultCode === 0){
+                            const {id, email, login} = data.data;
+                            dispatch(setAuthorizeData(id, login, email))
+                            dispatch(setAuthMessages(null))
+                        }
+                        })
+                        
+                    } else {
+                        dispatch(setAuthMessages(data.messages[0]))
+                    }
         }
     )
 }

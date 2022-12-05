@@ -82,45 +82,42 @@ export const setIsDisabled = (isTrue, userId) => ({type: SET_IS_DISABLED, isTrue
 
 export const getUsers = (activePage, pageSizeUsers) => {
     return (
-        (dispatch) => {
+        async (dispatch) => {
             dispatch(setIsPreloader(true))
-            usersAPI.getUsersToOnePage(activePage, pageSizeUsers)
-            .then(data => {
-                dispatch(setPage(activePage))
-                dispatch(setUsers(data.items))
-                dispatch(setTotalCount(data.totalCount))
-                dispatch(setIsPreloader(false))
-            });
+            const data = await usersAPI.getUsersToOnePage(activePage, pageSizeUsers);
+            
+            dispatch(setPage(activePage))
+            dispatch(setUsers(data.items))
+            dispatch(setTotalCount(data.totalCount))
+            dispatch(setIsPreloader(false))
         }
     )
 }
 
 export const setFollow = (userId) => {
     return (
-        (dispatch) => {
+        async (dispatch) => {
             dispatch(setIsDisabled(true, userId))
-            usersAPI.getUnfollow(userId)
-            .then(data => {
-                if(data.resultCode === 0){
-                    dispatch(unfollow(userId))
-                }
-                dispatch(setIsDisabled(false, userId))
-            });
+            const data = await usersAPI.getUnfollow(userId)
+            
+            if(data.resultCode === 0){
+                dispatch(unfollow(userId))
+            }
+            dispatch(setIsDisabled(false, userId))
         }
     )
 }
 
 export const setUnfollow = (userId) => {
     return (
-        (dispatch) => {
+        async (dispatch) => {
             dispatch(setIsDisabled(true, userId))
-            usersAPI.getFollow(userId)
-            .then(data => {
-                if(data.resultCode === 0){
-                    dispatch(follow(userId)) 
-                }
-                dispatch(setIsDisabled(false, userId))
-            });
+            const data = await usersAPI.getFollow(userId);
+
+            if(data.resultCode === 0){
+                dispatch(follow(userId)) 
+            }
+            dispatch(setIsDisabled(false, userId))
         }
     )
 }
