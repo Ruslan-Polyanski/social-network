@@ -94,16 +94,21 @@ export const getUsers = (activePage, pageSizeUsers) => {
     )
 }
 
+const fullowUnfollow = async (dispatch, userId, authMethod, move) => {
+        dispatch(setIsDisabled(true, userId))
+        const data = await authMethod(userId)
+        
+        if(data.resultCode === 0){
+            dispatch(move(userId))
+        }
+        dispatch(setIsDisabled(false, userId))
+}
+
 export const setFollow = (userId) => {
     return (
         async (dispatch) => {
-            dispatch(setIsDisabled(true, userId))
-            const data = await usersAPI.getUnfollow(userId)
-            
-            if(data.resultCode === 0){
-                dispatch(unfollow(userId))
-            }
-            dispatch(setIsDisabled(false, userId))
+            const authMethod = usersAPI.getUnfollow.bind(usersAPI);
+            fullowUnfollow(dispatch, userId, authMethod, unfollow)
         }
     )
 }
@@ -111,13 +116,8 @@ export const setFollow = (userId) => {
 export const setUnfollow = (userId) => {
     return (
         async (dispatch) => {
-            dispatch(setIsDisabled(true, userId))
-            const data = await usersAPI.getFollow(userId);
-
-            if(data.resultCode === 0){
-                dispatch(follow(userId)) 
-            }
-            dispatch(setIsDisabled(false, userId))
+            const authMethod = usersAPI.getFollow.bind(usersAPI);
+            fullowUnfollow(dispatch, userId, authMethod, follow)
         }
     )
 }
