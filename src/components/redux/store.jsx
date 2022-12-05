@@ -2,7 +2,6 @@ import reducerMessages from "./reducerMessages";
 import reducerNavItem from "./reducerNavItem";
 import reducerProfile from "./reducerProfile";
 import reducerSidebar from "./reducerSidebar";
-import React from "react";
 
 const store = {
   _state: {

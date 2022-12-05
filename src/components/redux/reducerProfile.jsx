@@ -1,8 +1,8 @@
 import { usersAPI, profileAPI } from "./../api/api.jsx";
 
-const ADD_POST = "ADD-POST";
-const SET_USERS_PROFILE = "SET_USERS_PROFILE";
-const SET_STATUS_PROFILE = "SET_STATUS_PROFILE";
+const ADD_POST = "PROFILE/ADD-POST";
+const SET_USERS_PROFILE = "PROFILE/SET_USERS_PROFILE";
+const SET_STATUS_PROFILE = "PROFILE/SET_STATUS_PROFILE";
 
 const initialState = {
     dataPost: [

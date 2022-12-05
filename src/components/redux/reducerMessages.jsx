@@ -1,6 +1,6 @@
 
 
-const ADD_CONTENT_DIALOG = "ADD-CONTENT";
+const ADD_CONTENT_DIALOG = "MESSAGES/ADD-CONTENT";
 
 const initialState = {
 

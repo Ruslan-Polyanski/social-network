@@ -1,8 +1,8 @@
 import { authAPI } from "./../api/api.jsx";
 
-const SET_AUTHORIZE_DATA = "SET_AUTHORIZE_DATA";
-const  SET_AUTHORIZE_MESSAGE = "SET_AUTHORIZE_MESSAGE";
-const SET_LOG_OUT = "SET_LOG_OUT";
+const SET_AUTHORIZE_DATA = "AUTH/SET_AUTHORIZE_DATA";
+const  SET_AUTHORIZE_MESSAGE = "AUTH/SET_AUTHORIZE_MESSAGE";
+const SET_LOG_OUT = "AUTH/SET_LOG_OUT";
 
 const initialState = {
     id: null,

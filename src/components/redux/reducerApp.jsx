@@ -1,6 +1,6 @@
 import { getRegistrationDataCreaterThunk } from "./reducerAuthoriz";
 
-const SET_INITIAL = "SET_INITIAL";
+const SET_INITIAL = "APP/SET_INITIAL";
 
 const initialState = {
     initial: false,
