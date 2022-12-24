@@ -1,0 +1,10 @@
+.buttonPages {
+    font-size: 18px;
+    color: white;
+    padding: 10px;
+}
+
+.activePage {
+    font-weight: bold;
+    color: rgb(243, 208, 10);
+}

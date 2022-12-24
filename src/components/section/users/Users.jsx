@@ -2,18 +2,11 @@ import style from "./Users.module.css";
 import userPhoto from "./../../../assets/img/b540fd8cd94b9e2a8590411dcc866463.jpg";
 import { NavLink } from "react-router-dom";
 import React from "react";
+import Pagination from "../../common/pagination/Pagination";
 
-const Users = ({users, pages, activePage, onPageChange, isDisabled, setFollow, setUnfollow}) => {
-
+const User = ({isDisabled, setFollow, setUnfollow, user}) => {
     return (
-        <>  
-        <div className={style.buttonPages}>
-            {pages.map((item) => { return <span key={item} className={ activePage === item ? style.activePage : ""} onClick={() => onPageChange(item)}> {item} </span> })}
-        </div>
-
-        {users.map((user) => {
-            return (
-                <div key={user.id}>
+                <div>
                     <div>
                         <div>
                             <NavLink to={"/profile/" + user.id}>
@@ -42,8 +35,18 @@ const Users = ({users, pages, activePage, onPageChange, isDisabled, setFollow, s
                             <div>{"user.location.city"}</div>
                         </div>
                     </div>
-
                 </div>
+    )
+}
+
+const Users = ({users, pages, activePage, onPageChange, isDisabled, setFollow, setUnfollow}) => {
+
+    return (
+        <>  
+        <Pagination pages={pages} activePage={activePage} onPageChange={onPageChange} />
+        {users.map((user) => {
+            return (
+                <User key={user.id} user={user} isDisabled={isDisabled} setFollow={setFollow} setUnfollow={setUnfollow}/>
             )
         })}
     </>
